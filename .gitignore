@@ -5,3 +5,9 @@
 *.log
 *.pdf
 *.synctex.gz
+
+# Beamer output files
+*.nav
+*.out
+*.snm
+*.toc
