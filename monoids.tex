@@ -1,0 +1,360 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz-cd}
+
+\title{Monoids}
+\author{Paul Zupan}
+\date{November 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+Algebra is something that most, if not all of us get taught in school at some
+point. Most of us learn algebra in terms of operations on numbers, some of
+which are whole numbers and others are decimal numbers. However, algebra is
+actually much more general than that. The objects that we work with in math
+most certainly do not have to be numbers. This article aims to explain one of
+the fundamental building blocks of abstract algebra, the monoid.
+
+\section{Definition of a Monoid}
+
+At a fundamental level, a monoid consists of three things. The first is some
+set of objects, which do not have to be numbers. If they are numbers, they do
+not have to be real numbers. They could be rational numbers, integers, or even
+natural numbers. Regardless of what is inside, we will call that set $M$. This
+set is sometimes called the "data" of the monoid.
+
+Next, a monoid has some way of combining the elements of $M$. Formally, we call
+this a binary operation. We will call that operation $\circ$. This circle can
+represent any operation. If we wanted to be extra precise, we could even
+specify the type signature of the operation, which is $\circ : M \times M \to
+M$. In simpler terms, this means that $\circ$ takes in two elements from $M$
+and combines them to form a new element of $M$.
+
+The last thing that we need to create a monoid is a special element from $M$
+that we call $1$. This should not be confused with the concrete number $1$.
+This symbol does not necessarily denote a value of $1$, since the elements of
+$M$ do not have to be numbers, as we recall. This is simply a placeholder for
+what we call the identity element on $\circ$. This identity element along with
+the binary operation are sometimes referred to as the "structure" of the
+monoid.
+
+We have covered the data, which is the set $M$, and we have covered the
+structure, which is the binary operation $\circ$ and the identity element $1$.
+There is one more thing we need to talk about to complete the definition of a
+monoid, and that is the "properties." We can think of properties as constraints
+that we put on the structure. The properties are the following:
+
+\begin{itemize}
+  \item For any three elements $a$, $b$, and $c$ in $M$, the equation $(a \circ
+    b) \circ c = a \circ (b \circ c)$ must be satisfied. Another way of stating
+    this fact is by saying that the binary operation $\circ$ is associative.
+    This means that the order of the parentheses in an expression does not
+    change the value of the expression.
+  \item For any element $m$ in $M$, the equation $1 \circ m = m = m \circ 1$
+    must be satisfied. This is the same thing as saying that $1$ cancels on the
+    left and right hand side of any application of $\circ$, leaving the other
+    operand unchanged. We could also say that $\circ$ is \textit{unital} with
+    respect to $1$.
+\end{itemize}
+
+The data, structure, and properties listed above are all there is to a monoid.
+To wrap the definition up, we could write any monoid as its three components
+wrapped in a set of parentheses, like this: $(M, \circ, 1)$. That is all there
+is to monoids!
+
+\section{Motivation}
+
+I would now like to explain briefly why we should care about monoids. It is
+true that this idea may not apply directly to real life at first glance.
+Monoids essentially encapsulate the idea of basic arithmetic with natural
+numbers. Their power comes from their ability to translate our intuition about
+arithmetic with numbers into intuition about other kinds of objects. In
+addition, monoids form the basis for other kinds of abstract algebraic
+structures.
+
+It is rather difficult to explain the usefulness of monoids with words, so it
+would perhaps be more fruitful to show some examples of monoids in action.
+
+\section{Examples of Monoids}
+
+One example of a monoid that we briefly touched on earlier was the natural
+numbers, typically denoted $\mathbb{N}$. The natural numbers are essentially
+positive whole numbers, the first few being $0$, $1$, $2$, \textit{ad
+infinitum}. The binary operation for this monoid is addition, and the identity
+element is the number $0$. Let us unpack this.
+
+Most of us take for granted that addition is associative, mostly because we can
+just \textit{feel} that it is. Say that we had three groups of things, group A,
+group B, and group C. If we merge groups A and B, then merge group C, of course
+the total number of things is the same as if we merged groups B and C then
+merged A into that. If you would like to see a more rigorous proof of why
+addition is associative over the natural numbers, see the appendix.
+
+Intuitively, it is also rather easy to see why zero is the identity element. If
+we have some things and we add zero things to that group, of course we will end
+up with the same amount. Again, for a more rigorous proof of this fact, see the
+appendix.
+
+To sum up (ha ha), we have shown that $(\mathbb{N}, +, 0)$ is a monoid. Though
+this is one of the most fundamental monoids, it is far from the only one.
+
+Sticking with the natural numbers, we could also define the monoid
+$(\mathbb{N}, \cdot, 1)$. This is the monoid of the natural numbers under
+multiplication with $1$ as the identity element. In this case, the identity
+element is literally the number $1$, unlike our placeholder value. It should be
+mostly intuitive why these components form a monoid.
+
+That wraps up the core of this explanation of monoids. However, monoids do not
+stop there. It turns out that there are two more definitions of monoids that
+are each quite interesting in their own right. A fair warning, understanding
+these definitions fully requires a working knowledge of category theory. If you
+have not studied much category theory, you may want to look up
+\textbf{categories}, \textbf{functors}, and \textbf{natural transformations}
+before proceeding, preferably in that order.
+
+\section{From a Categorical Point of View}
+
+Through the lens of category theory, a monoid is simply a category containing a
+single object. This is quite an abstract definition, so let us break it down a
+bit.
+
+In our old definition, we had a set $M$ with an associative and unital binary
+operation $\circ$ along with an identity element $1$. It turns out that each
+component of this definition maps to one of the components of the definition of
+a category! The single object of the category is simply a dummy object with no
+qualities whatsoever. It may be tempting to take $M$ as the object of the
+category, but that is not necessarily the case. That point of view can exist,
+but we will examine it further later.
+
+Really, the morphisms of the monoid category, which will henceforth be known as
+$\mathcal{C}$, are the elements of $M$. This may seem strange, since it is
+natural to think of morphisms as relationships like functions or binary
+relations, but this is a perfectly valid way to define morphisms as well. The
+only requirement of the morphisms is that if two share a common middle object,
+they can be composed. Interestingly, since we only have a single object in this
+category, all arrows share a common middle object (the only object), so they
+can all be composed with each other. The effect is that the binary operation of
+the monoid becomes morphism composition.
+
+It will be useful to have a name for the single object in $\mathcal{C}$, so let
+us call it $A$. Every object in every category must have a unique identity
+morphism, which corresponds to the identity element in $M$. We can observe that
+$\circ$ is unital over $M$ with respect to $1$ as morphism composition is
+unital over $hom_\mathcal{C}(A, A)$ with respect to $1_A$.
+
+In conclusion, all of the data, structure, and properties of an algebraic
+monoid map perfectly onto a category. The advantage of looking at things this
+way is that things that may not have looked like monoids before can actually be
+monoids in disguise.
+
+Let us revisit the mental model of a monoid in the category \textbf{Set}. If we
+think of the single object $A$ as a set and consider all of the functions $A
+\to A$, we actually have a brand new monoid. Functions are like numbers from
+before, composition is like addition, and the identity map $x \mapsto x$ is
+like the number $0$. You may have never even considered that monoid before, but
+this categorical viewpoint makes it trivial to come up with.
+
+\subsection{The Three Piece Suit Definition}
+
+Okay, here we go. There is a reason that I call this the \textit{three piece
+suit definition} and that is because it relies on a very, very large amount of
+knowledge about category theory to fully grasp. We should now take a look at
+monoidal categories.
+
+A monoidal category, in essence, is a categorified monoid. In different words,
+to get a monoidal category, you just take the algebraic definition of a monoid,
+replace every set with a category, replace every function with a functor, and
+replace every equation with a natural isomorphism. That is quite a lot to think
+about at once, so let us again break this down.
+
+Formally, a monoidal category $(\mathcal{C}, \otimes, I)$ is a category
+$\mathcal{C}$ along with a binary functor $\otimes : \mathcal{C} \times
+\mathcal{C} \to \mathcal{C}$, called the tensor product, and an identity object
+$I \in \operatorname{ob}(\mathcal{C})$. So far, we have something that is very
+similar to a regular algebraic monoid. The astute reader may have noticed that
+we defined our data and structure, but where are the properties? The last part
+of the definition includes three natural isomorphisms acting as coherence
+conditions for the tensor product:
+
+\begin{itemize}
+  \item $\alpha_{A, B, C} : (A \otimes B) \otimes C \to A \otimes (B \otimes
+    C)$, called the associator
+  \item $\lambda_A : I \otimes A \to A$, called the left unitor
+  \item $\rho_A : A \otimes I \to A$, called the right unitor
+\end{itemize}
+
+These natural isomorphisms must make the following diagrams commute. The first
+diagram is the associativity diagram:
+
+\begin{equation*}
+  % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAp2BBAAgB0+EPAFt4PAEIBKfoJFiAwtIFCsouDwAiIAL6l0mXPkIoATOSq1GLNtxkq1EpbNVj28u3PUbJOvSAzYeAREACzm1PTMrIggvMqePOziHi7qbikO3j66+oFGRGQAjBaR1jG28amJyZUOik72Ylo5-gZBxshhxRFW0bEZrkkD6orDmtkWMFAA5vBEoABmAE4QwkhkIDgQSIU9UWwCjGgAFnQA+sBxzg7ipDzydxravosra4i7m9uIZpb7MYcGCdzpc7rd7mMni8QMtVutqFskABmagMOgAIxgDAACm18jEllhpsccCA9mUQIDgRcuGC7vJtGNCmdmn5Ye8UV8kGEQGjMTi8cECUSSWS-hSqacaWCxg9NM8WuzuQjvr8+VjcXkhSBCcTSeS+syro11JKQeC5VDtBRtEA
+  \begin{tikzcd}
+    ((A \otimes B) \otimes C) \otimes D \arrow[rr, "{\alpha_{A \otimes B, C, D}}"] \arrow[d, "{\alpha_{A, B, C} \otimes 1_D}"'] &  & (A \otimes B) \otimes (C \otimes D) \arrow[rr, "{\alpha_{A, B, C \otimes D}}"] &  & A \otimes (B \otimes (C \otimes D))                                              \\
+    (A \otimes (B \otimes C)) \otimes D \arrow[rrrr, "{\alpha_{A, B \otimes C, D}}"']                                           &  &                                                                                &  & A \otimes ((B \otimes C) \otimes D) \arrow[u, "{1_A \otimes \alpha_{B, C, D}}"']
+  \end{tikzcd}
+\end{equation*}
+
+And the second diagram is the identity diagram:
+
+\begin{equation*}
+  % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAoBBAAgB1eIeALbxuASQCUfAcNEAhEAF9S6TLnyEUAJnJVajFmx79BWEXG7sx00+e5yJSlSAzY8BIgEZSnvfWasiCDGMmbySnowUADm8ESgAGYAThBCSGQgOBBI3voBbPyMaAAWdAD6wJyk4tVyik6JKWmIGVlIOnmGQfxJxRBlIbainmUK1Ax0AEYwDAAKau6aIElY0cU4DSDJqTnUbYgd-l0gI4OyFvwTQpNQ5ZwRikA
+  \begin{tikzcd}
+    (A \otimes I) \otimes B \arrow[rr, "{\alpha_{A, I, B}}"] \arrow[rd, "\rho_A \otimes 1_B"'] &             & A \otimes (I \otimes B) \arrow[ld, "1_A \otimes \lambda_A"] \\
+                                                                                               & A \otimes B &
+  \end{tikzcd}
+\end{equation*}
+
+The fact that we are using natural isomorphisms instead of equations gives us a
+lot of flexibility. We can create monoidal categories where the tensor product
+is not really associative, but is \textit{basically} associative. For instance,
+take the monoidal category $(\textbf{Set}, \times, \{*\})$. The cartesian
+product is not exactly associative, but each of the two sets contains the same
+information. $((a, b), c)$ is not the same object as $(a, (b, c))$, but they
+contain precisely the same information, so we can define an isomorphism between
+the two. In a similar manner, the object $a$ and the pair $(a, i)$ where $i$ is
+fixed contain the same information.
+
+Here is an aside about the diagrams. They confused me at first, but they are
+actually extremely important. Instead of enforcing that the tensor product be
+strictly associative, we only require that it be associative up to isomorphism.
+That gives us quite a lot of freedom with what we can consider to be a monoidal
+category, which we will see later. However, a consequence of this freedom is
+that we now have the capability to define isomorphisms that do not make sense.
+
+For instance, let us take an example in the category of groups \textbf{Grp}. In
+this monoidal category, the tensor product is the cartesian product and the
+identity object is the trivial group. We can define the alpha transformation as
+$\alpha_{A, B, C}((a, b), c) = (-a, (-b, -c))$. Since we are in the category of
+groups, $A$, $B$, and $C$ are all groups, so all elements of those groups have
+inverses. Not to mention, since all inverses are unique, this transformation
+does not lose any information, so it is an isomorphism. The problem arises when
+we check the commutative diagrams. Let us check the identity diagram since it
+is simpler:
+
+\begin{equation*}
+  \begin{split}
+    (\rho_A \otimes 1_B)((a, 1), b)
+      & = (\rho_A(a, 1), 1_B(b)) \\
+      & = (a, b)
+  \end{split}
+\end{equation*}
+
+That is fine, but when we check the other path:
+
+\begin{equation*}
+  \begin{split}
+    ((1_A \otimes \lambda_A) \circ \alpha_{A, I, B})((a, 1), b)
+      & = (1_A \otimes \lambda_A)(\alpha_{A, I, B}((a, 1), b)) \\
+      & = (1_A \otimes \lambda_A)(-a, (1, -b)) \\
+      & = (1_A(-a), \lambda_A(1, -b)) \\
+      & = (-a, -b)
+  \end{split}
+\end{equation*}
+
+The two paths through the diagram are not equal, so the diagram does not
+commute. This is an example of how the coherence conditions set in place by the
+diagrams prevent us from doing crazy things with the power of the isomorphisms.
+
+With all of that out of the way, we can actually define a monoid. Fix a
+monoidal category $(\mathcal{C}, \otimes, I)$. A monoid in $\mathcal{C}$,
+denoted by $(M, \mu, \eta)$, is an object $M \in
+\operatorname{ob}(\mathcal{C})$ along with two morphisms
+
+\begin{itemize}
+  \item $\mu : M \otimes M \to M$ called multiplication, and
+  \item $\eta : I \to M$ called unit
+\end{itemize}
+
+such that the pentagon diagram
+
+\begin{equation*}
+  % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAoBZAAgB1eIeALbxunAJR8Bw0ZxABfUuky58hFACZyVWoxZse-QVhFxuXKcdNjxCpSAzY8BIgBZt1es1aIQh6SaydspOakRkAIw6Xvq+-lZBiiGqLijuUZ56Pn4KOjBQAObwRKAAZgBOEEJIZCA4EEgAzNQMdABGMAwACirO6iDlWAUAFjggmd5s-EJMljJmEQD6ckkgFVU11PVIEROxIPyMaMN0i8CcpGKXnPLBa5XViLt1DYhaupO+S-HzUjN360e722iHcH320yYAIeTS2rzBrQ63V6YV8gxGYz22UhuXkQA
+  \begin{tikzcd}
+    (M \otimes M) \otimes M \arrow[d, "\mu \otimes 1_M"'] \arrow[rr, "{\alpha_{M, M, M}}"] &  & M \otimes (M \otimes M) \arrow[rr, "1_M \otimes \mu"] &  & M \otimes M \arrow[d, "\mu"] \\
+    M \otimes M \arrow[rrrr, "\mu"']                                                       &  &                                                       &  & M
+  \end{tikzcd}
+\end{equation*}
+
+and the unitor diagram
+
+\begin{equation*}
+  % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEkACAHW4jwC28TgFkQAX1LpMufIRQBGclVqMWbETz6DhYydOx4CRAEzLq9Zq0QhNvfliFxO7CVJAZDcokoUrL6jZ6KjBQAObwRKAAZgBOEAJIZCA4EEhKqlZsvDA4dFoOTpwKAPp67nEJSGYpaYgZDHQARjAMAAoyRvIgsVhhABY4IBZq1iCldtqOwjl5bjHxifXUqUgAzNSNLe2d3ja9A0MjWTa8AkzzIJVLyauIGyBbrR1exvt9g8OZgSC8jQJNKB0MqXa7VFZ1B4BMa8WL9CAg8QUcRAA
+  \begin{tikzcd}
+    I \otimes M \arrow[r, "\eta \otimes 1_M"] \arrow[rd, "\lambda_M"'] & M \otimes M \arrow[d, "\mu"'] & M \otimes I \arrow[l, "1_M \otimes \eta"'] \arrow[ld, "\rho_M"] \\
+                                                                       & M                             &
+  \end{tikzcd}
+\end{equation*}
+
+commute. This is truly a lot to take in. I think that looking at an example is
+the best way to under stand this definition.
+
+Let us return to the monoidal category $(\textbf{Set}, \times, \{*\})$ from
+earlier. A monoid in this category would be a set $M$ with two morphisms $\mu :
+M \times M \to M$ and $\eta : \{*\} \to M$. Think about this for a second. In
+the category of sets, morphisms are just functions, so $\mu$ is just a function
+that combines two elements of $M$ into a third element. Wait a second, that
+sounds just like the algebraic definition! It gets better though. A function
+whose domain set is the singleton set is essentially just picking an element
+from the codomain set. That means that $\eta$ is basically just an element of
+$M$, at least it is isomorphic to an element of $M$.
+
+You might already be able to guess the role that the commutative diagrams play
+here. In category theory, we do not really get to use equals signs. Equality is
+a very strict contract that category theorists often hesitate to sign. However,
+one way that strict equality sneaks its way into category theory is through the
+definition of a commutative diagram. What that means in this context is that
+the pentagon diagram ensures that $\mu$ is an associative operation, and the
+unitor diagram ensures that $\eta$ is the identity element. Let us drill in
+deeper and explore this directly.
+
+Let us take $M = \mathbb{N}$. We can define $\mu$ and $\eta$ directly:
+
+\begin{itemize}
+  \item $\mu(a, b) = a + b$
+  \item $\eta(*) = 0$
+\end{itemize}
+
+We can now check to see if the diagrams commute:
+
+\begin{equation*}
+  \begin{split}
+    (\mu \circ (1_M \otimes \mu) \circ \alpha_{M, M, M})((a, b), c)
+      & = \mu((1_M \otimes \mu)(\alpha_{M, M, M}((a, b), c))) \\
+      & = \mu((1_M \otimes \mu)(a, (b, c))) \\
+      & = \mu(1_M(a), \mu(b, c)) \\
+      & = \mu(a, b + c) \\
+      & = a + (b + c)
+  \end{split}
+\end{equation*}
+
+\begin{equation*}
+  \begin{split}
+    (\mu \circ (\mu \otimes 1_M))((a, b), c)
+      & = \mu((\mu \otimes 1_M)((a, b), c)) \\
+      & = \mu(\mu(a, b), 1_M(c)) \\
+      & = \mu(a + b, c) \\
+      & = (a + b) + c
+  \end{split}
+\end{equation*}
+
+We can see that in order for the diagram to commute, the two paths must be
+equal to each other, so $(a + b) + c$ must equal $a + (b + c)$. In this way,
+the pentagon diagram ensures the associativity of $\mu$.
+
+\section{Appendix}
+
+\subsection{Proof of Associativity of Union}
+
+To do.
+
+\subsection{Proof of Associativity of Addition over $\mathbb{Z}$}
+
+To do.
+
+\end{document}

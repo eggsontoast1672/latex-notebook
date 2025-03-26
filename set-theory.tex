@@ -1,0 +1,91 @@
+\documentclass{article}
+
+\usepackage{amssymb}
+
+\title{Set Theory}
+\author{Paul Zupan}
+\date{November 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+Have you ever thought about why numbers exist? Why does adding two numbers
+together make a new number? What even is addition?
+
+These questions may not seem relevant. Of course numbers exist. After all, I
+know without a doubt that I have 10 fingers, two arms, and five coffee cups on
+my desk. Neither you nor I need math to explain that. However, in the very
+precise world of mathematics, it's not enough to just believe that something is
+true.
+
+It is possible to think of math as a bunch of facts floating around in space,
+each tangentially related to numbers in some way. After all, what is math
+without numbers? The truth is, math is much deeper than that. There are really
+two kinds of facts:
+
+\begin{enumerate}
+  \item Axioms. These are things that we assume to be true. Axioms are like the
+    foundation of a house. You can't build anything on top of there's nothing
+    to support it.
+  \item Theorems. These are facts which follow from axioms. Essentially, one
+    can combine and manipulate the axioms to produce new facts.
+\end{enumerate}
+
+The thing about axioms that is kind of confusing is that axioms can be
+anything. Anything at all. Of course some foundations work better for
+construction than others, so not just any old axioms will be able to support
+the rest of math on top of them.
+
+\section{The ZFC Axioms}
+
+\subsection{Axiom of Extensionality}
+
+Any two sets which contain the same elements are themselves the same. Another
+way to think about this is that the equality of two sets is defined entirely by
+what is inside, rather than the manner in which they were generated. For
+instance, if $A = \{1, 2, 3\}$ and $B = \{x \in \mathbb{N} : x \leq 3\}$, we
+call them the same because they each contain $1$, $2$, and $3$, despite the
+fact that their definitions look different. Formally, this axiom is expressed
+as
+
+$$
+\forall x. \forall y. [\forall z. (z \in x \Leftrightarrow z \in y)
+\Leftrightarrow x = y].
+$$
+
+In plain English, pick any two sets $x$ and $y$. Saying that $x = y$ is the
+same thing as saying that if you pick a third set $z$, then $z$ is either in
+both $x$ and $y$ or it is in neither. The bracketing simply act as scopes for
+$x$, $y$, and $z$.
+
+\subsection{Axiom of Regularity}
+
+Any nonempty set $x$ contains an element $y$ such that $x$ and $y$ are
+disjoint, meaning that $x$ and $y$ share no elements. The purpose of this axiom
+is to avoid Russel's paradox, which is the idea that bad things happen if you
+allow a set to be an element of itself. Formally,
+
+$$
+\forall x. x \neq \varnothing \Rightarrow \exists y \in x : y \cap x =
+\varnothing.
+$$
+
+Note that this axiom is only part the way we ensure that Russel's paradox can't
+happen. All that the axiom of regularity says is that if you pick any set $x$
+which contains at least one element, then at least one element of $x$, itself
+contains none of the elements that $x$ does. This doesn't stop another set, say
+$z$, from being an element of $x$ such that $z \cap x \neq \varnothing$.
+
+\subsection{Axiom Schema of Specification}
+
+Points of confusion:
+
+\begin{itemize}
+  \item What is $\varnothing$?
+  \item What is a set?
+\end{itemize}
+
+\end{document}

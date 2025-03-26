@@ -1,0 +1,193 @@
+\documentclass{beamer}
+
+\usepackage{mathtools}
+
+\title{Isomorphisms: The Bigger Picture of Math}
+\author{Paul Zupan}
+\institute{First Year Undergraduate \\ University of Oregon}
+\date{Math For All, April 2025}
+
+\newtheorem{remark}{Remark}
+
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ob}{ob}
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\inner}{\langle}{\rangle}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+  \frametitle{About Me}
+
+  \begin{itemize}
+    \item First year undergrad at UO studying math and music
+    \item Software development background
+    \item Aiming for a master's and PHD so I can teach math
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Basic Category Theory}
+
+  \begin{definition}
+    A category \(\mathcal{C}\) consists of the following:
+
+    \begin{itemize}
+      \item A collection of objects (\(\ob{\mathcal{C}}\))
+      \item A collection of morphisms (\(f : A \to B, g : B \to C\))
+      \item Associative morphism composition (\(g \circ f\))
+      \item Identity morphisms (\(f \circ \id_A = f = \id_B \circ f\))
+    \end{itemize}
+  \end{definition} \pause
+
+  \begin{examples}
+    \begin{itemize}
+      \item Sets and functions (\(\mathbf{Set}\))
+      \item Groups and homomorphisms (\(\mathbf{Grp}\))
+      \item Vector spaces and linear maps (\(K\)-\(\mathbf{Vect}\))
+    \end{itemize}
+  \end{examples}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Isomorphisms}
+
+  \begin{definition}
+    Let \(f : A \to B\) be a morphism. We say \(f\) is an isomorphism if there
+    exists an arrow \(f^{-1} : B \to A\) such that \(f^{-1} \circ f = \id_A\)
+    and \(f \circ f^{-1} = \id_B\).
+  \end{definition}
+
+  \begin{itemize}
+    \item An isomorphism is an invertible arrow
+    \item Objects \(A\) and \(B\) contain the same information
+    \item Defines an equivalence relation \(A \cong B\)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Isomorphic Sets}
+
+  \begin{lemma}
+    Let \(A\) and \(B\) be sets. \(A\) and \(B\) are isomorphic if they contain
+    the same number of elements.
+  \end{lemma}
+
+  \begin{itemize}
+    \item If \(\abs{A} < \abs{B}\), there is no surjection from \(A\) to \(B\)
+    \item If \(\abs{A} > \abs{B}\), there is no injection from \(A\) to \(B\)
+  \end{itemize} \pause
+
+  \begin{examples}
+    The sets \(A = \{a, b, c\}\) and \(B = \{1, 2, 3\}\) are isomorphic.
+
+    \begin{align*}
+      a & \mapsto 1 \\
+      b & \mapsto 2 \\
+      c & \mapsto 3 \\
+    \end{align*}
+  \end{examples}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Isomorphic Groups}
+
+  \begin{lemma}
+    Let \(G\) and \(H\) be groups. \(G\) and \(H\) are isomorphic if they have
+    the same order and same structure.
+  \end{lemma}
+
+  \begin{itemize}
+    \item Underlying sets are isomorphic
+    \item All elements have the same order
+    \item Same Cayley table
+  \end{itemize} \pause
+
+  \begin{examples}
+    The groups \(Z_6\) and \(Z_2 \times Z_3\) are isomorphic. We refer to them
+    as \textbf{the} cyclic group of order 6.
+
+    \begin{equation*}
+      \begin{aligned}
+        0 & \mapsto (0, 0) \\
+        1 & \mapsto (1, 1) \\
+        2 & \mapsto (0, 2) \\
+      \end{aligned}
+      \qquad
+      \begin{aligned}
+        3 & \mapsto (1, 0) \\
+        4 & \mapsto (0, 1) \\
+        5 & \mapsto (1, 2) \\
+      \end{aligned}
+    \end{equation*}
+  \end{examples}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Isomorphic Vector Spaces}
+
+  \begin{lemma}
+    Let \(V\) and \(W\) be vector spaces over a field \(K\). \(V\) and \(W\)
+    are isomorphic if and only if they have the same dimension.
+  \end{lemma}
+
+  \begin{itemize}
+    \item This is true because the vector space structure is so strong
+    \item If fields do not match, isomorphism does not make sense
+  \end{itemize} \pause
+
+  \begin{examples}
+    The vector spaces \(\mathbb{R}^3\) and \(\mathbb{P}_2\) are isomorphic. It
+    is sufficient to define an invertible map on the bases.
+
+    \begin{align*}
+      (1, 0, 0) & \mapsto 1 \\
+      (0, 1, 0) & \mapsto x \\
+      (0, 0, 1) & \mapsto x^2 \\
+    \end{align*}
+  \end{examples}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Other Interesting Isomorphisms}
+
+  Many explicit constructions can be made implicit through isomorphism.
+
+  \begin{examples}
+    \begin{itemize}
+      \item As rings, \(\mathbb{C} \cong \mathbb{R}[x]/\inner{x^2 + 1}\)
+      \item As vector spaces, \(\mathbb{C} \cong \mathbb{R}^2\)
+      \item As vector spaces, \(V \times W \cong V \oplus W\)
+      \item As groups, \(D_3 \cong S_3\)
+      \item Define an equivalence relation \(\sim\) on \(\mathbb{N}^2\) by
+        \((a, b) \sim (c, d)\) if and only if \(a + d = b + c\). Then
+        \(\mathbb{Z} \cong \mathbb{N}^2/(\sim)\) as sets.
+    \end{itemize}
+  \end{examples}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Final Thoughts}
+
+  \begin{itemize}
+    \item Implicit is better than explicit
+    \item Imprecision without loss of precision
+    \item What does ``is'' mean?
+    \item Aside: the Yoneda lemma
+    \item Recommended reading:
+      \begin{enumerate}
+        \item The Joy of Abstraction by Eugenia Cheng
+        \item Undergraduate Algebra by Serge Lang
+        \item Categories for the Working Mathematician by Saunders Mac Lane
+      \end{enumerate}
+  \end{itemize} \pause
+
+  \begin{center} \Huge
+    Thank you for coming!
+  \end{center}
+\end{frame}
+
+\end{document}
