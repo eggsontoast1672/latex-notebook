@@ -1,0 +1,243 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+Assume that every function is defined as \(\mathbb{R} \to \mathbb{R}\) and
+every variable is a real number, unless specified otherwise. Round each answer
+to three decimal places unless otherwise specified.
+
+\section{Limits and Continuity}
+
+\subsection{Road Construction}
+
+A car's position \(s(t)\) on a highway is given by \(s(t) = 3t^2 + 2t - 5\) (in
+meters), where \(t\) is in seconds. Find the instantaneous velocity of the car
+at \(t = 2\) seconds.
+
+\textit{Solution} \: We need to find the rate of change of \(s\) at \(t = 2\).
+We can use a limit expression to achieve this:
+
+\[
+  \begin{split}
+    \lim_{t \rightarrow 2} \frac{s(t) - s(2)}{t - 2}
+      & = \lim_{t \rightarrow 2} \frac{3t^2 + 2t - 5 - 3 \cdot 2^2 - 2 \cdot 2 + 5}{t - 2} \\
+      & = \lim_{t \rightarrow 2} \frac{3t^2 + 2t - 3 \cdot 4 - 4}{t - 2} \\
+      & = \lim_{t \rightarrow 2} \frac{3t^2 + 2t - 12 - 4}{t - 2} \\
+      & = \lim_{t \rightarrow 2} \frac{3t^2 + 2t - 16}{t - 2} \\
+      & = \lim_{t \rightarrow 2} \frac{3t^2 + 8t - 6t - 16}{t - 2} \\
+      & = \lim_{t \rightarrow 2} \frac{t(3t + 8) - 2(3t + 8)}{t - 2} \\
+      & = \lim_{t \rightarrow 2} \frac{(3t + 8)(t - 2)}{t - 2} \\
+      & = \lim_{t \rightarrow 2} (3t + 8) \\
+      & = 3 \cdot 2 + 8 \\
+      & = 6 + 8 \\
+      & = 14
+  \end{split}
+\]
+
+Thus, the instantaneous velocity of the car at \(t = 2\) seconds is 14 meters
+per second. \(\square\)
+
+\subsection{Temperature Change}
+
+The temperature \(T(x)\) in a metal rod \(x\) cm from one end is given by
+\(T(x) = 100 - 2x^2\). Find the rate of change of temperature when \(x = 5\)
+cm.
+
+\textit{Solution} \: The rate of change of the temperature \(x\) centimeters
+from the end, in degrees celsius per centimeter, is given by the function
+\(T'(x) = -4x\). Evaluating the function at a distance of 5 centimeters gives
+\(T'(5) = -4 \cdot 5 = -20\). Thus, at a distance of 5 centimeters from the end
+of the rod, the temperature of the rod is \textit{decreasing} at a rate of 20
+degrees celsius per centimeter. \(\square\)
+
+\subsection{Bacterial Growth}
+
+The number of bacteria in a culture at time \(t\) (in hours) is modeled by
+\(N(t) = 500e^{0.1t}\). Find the rate at which the bacteria population is
+growing at \(t = 3\) hours.
+
+\textit{Solution} \: As with the previous two problems, we can simply
+differentiate \(N\) to find the rate of change. The rate of change of \(N\) at
+a time \(t\), in bacteria per hour, is given by \(N'(t) = 50e^{0.1t}\). At \(t
+= 3\) hours, the rate of change in the number of bacteria is given by
+\(T'(3) = 50e^{0.1 \cdot 3} = 50e^{0.3} \approx 67.493\). Thus, three hours
+after the beginning of the experiment, the bacteria are growing at a rate of
+approximately 67.493 bacteria per hour. \(\square\)
+
+\section{Derivatives}
+
+\subsection{Revenue Maximization}
+
+A company sells \(x\) units of a product at a price \(p(x) = 100 - 2x\) dollars
+per unit. What number of units \(x\) maximizes the revenue \(R(x) = x \cdot
+p(x)\)?
+
+\textit{Solution} \: Expanding the definition of \(R\) gives \(R(x) = x \cdot
+(100 - 2x) = 100x - 2x^2\). We can now see that \(R\) is a parabola which opens
+downward. That means that its maximum value will be attained precisely at the
+value of \(x\) for which \(R'(x) = 0\). Solving for \(x\):
+
+\[
+  \begin{split}
+    R'(x) & = 0 \\
+    100 - 4x & = 0 \\
+    -4x & = -100 \\
+    x & = 25
+  \end{split}
+\]
+
+This means that manufacturing 25 units will maximize the company's profit.
+\(\square\)
+
+\subsection{Water Leak}
+
+Water leaks from a tank at a rate modeled by \(r(t) = 10 - 2t\) liters per
+hour. At what time \(t\) does the leak stop?
+
+\textit{Solution} \: The leak stops when the rate of the leak reduces to zero.
+That means we should solve for \(t\) in \(r(t) = 0\):
+
+\[
+  \begin{split}
+    r(t) & = 0 \\
+    10 - 2t & = 0 \\
+    -2t & = -10 \\
+    t & = 5
+  \end{split}
+\]
+
+Thus, the leak stops at \(t = 5\) hours. \(\square\)
+
+\subsection{Falling Object}
+
+A ball is dropped from a height of 100 meters. Its height \(h(t)\) at time
+\(t\) (seconds) is given by \(h(t) = 100 - 4.9t^2\). Find the velocity of the
+ball when it hits the ground.
+
+\textit{Solution} \: The ball will hit the groud at the time value \(t\)
+satisfying \(h(t) = 0\), so let us calculate that first:
+
+\[
+  \begin{split}
+    h(t) & = 0 \\
+    100 - 4.9t^2 & = 0 \\
+    -4.9t^2 & = -100 \\
+    t^2 & = \frac{1000}{49} \\
+    t^2 & = \pm\sqrt{\frac{1000}{49}} \\
+    t & = \pm\frac{\sqrt{1000}}{\sqrt{49}} \\
+    t & = \pm\frac{10\sqrt{10}}{7}
+  \end{split}
+\]
+
+We can take either the positive or negative value, but since \(t\) represents a
+time value, only the positive one makes sense. We can then plug that value of
+\(t\) into the velocity function to get the velocity of the ball at that time.
+We then have
+
+\[
+  \begin{split}
+    h'(\frac{10\sqrt{10}}{7})
+    & = -9.8 \cdot \frac{10\sqrt{10}}{7} \\
+    & = \frac{-98\sqrt{10}}{7} \\
+    & \approx -44.272
+  \end{split}
+\]
+
+Thus, the precise moment when the ball hits the ground, it has a velocity of
+44.272 meters per second in the downward direction. \(\square\)
+
+\subsection{Car Acceleration}
+
+A car's velocity (in m/s) is given by \(v(t) = 4t^2 - 2t + 1\). Find the car's
+acceleration at \(t = 3\) seconds.
+
+\textit{Solution} \: The acceleration is given by the derivative of the
+velocity. Let \(a(t) = 8t - 2\) represent the acceleration of the car, in
+meters per second squared, at a time \(t\). The acceleration of the car at \(t
+= 3\) is then given by \(a(3) = 8 \cdot 3 - 2 = 24 - 2 = 22\). Thus, at time
+\(t = 3\) seconds, the car's velocity is increasing at a rate of 22 meters per
+second, per second. \(\square\)
+
+\section{Area and Volume}
+
+\subsection{Area Between Curves}
+
+Find the area between \(y = x^2\) and \(y = 2x\) for \(0 \leq x \leq 2\).
+
+\textit{Solution} \: Before going any further, let \(f(x) = x^2\) and \(g(x) =
+2x\). Picturing these two curves, we know that \(\forall x \in [0, 2]. f(x)
+\leq g(x)\). That means that we have to take the total area enclosed by \(g\),
+the \(x\)-axis, and the line \(x = 2\) and subtract from it the area enclosed
+by \(f\), the \(x\)-axis, and the line \(x = 2\). We can use integrals:
+
+\[
+  \begin{split}
+    \int_{0}^{2} g(x) dx - \int_{0}^{2} f(x) dx
+    & = \int_{0}^{2} 2x dx - \int_{0}^{2} x^2 dx \\
+    & = (2^2 - 0^2) - (\frac{1}{3} \cdot 2^3 - \frac{1}{3} \cdot 0^3) \\
+    & = (4 - 0) - (\frac{1}{3} \cdot 8 - \frac{1}{3} \cdot 0) \\
+    & = 4 - (\frac{8}{3} - 0) \\
+    & = 4 - \frac{8}{3} \\
+    & = \frac{4}{3}
+  \end{split}
+\]
+
+Thus, the area between the two curves is \(4/3\) units. \(\square\)
+
+\section{Epsilon-Delta Problems}
+
+\subsection{Limit of a Linear Function}
+
+Prove that
+
+\[
+  \lim_{x \rightarrow 2} (3x + 1) = 7.
+\]
+
+\textit{Solution} \: Let \(f(x) = 3x + 1\). We aim to show that for any
+\(\varepsilon > 0\) such that \(|f(x) - 7| < \varepsilon\), there exists some
+\(\delta > 0\) such that \(|x - 2| < \delta\).
+
+\[
+  \begin{split}
+    |f(x) - 7| & < \varepsilon \\
+    |3x + 1 - 7| & < \varepsilon \\
+    |3x - 6| & < \varepsilon \\
+    3|x - 2| & < \varepsilon \\
+    |x - 2| & < \frac{\varepsilon}{3}
+  \end{split}
+\]
+
+We can then take \(\delta = \frac{\varepsilon}{3}\), since as we just saw, this
+quantity satisfies the inequality. Thus, there exists such a \(\delta\) as
+required. \(\square\)
+
+\subsection{Limit of a Quadratic Function}
+
+Prove that
+
+\[
+  \lim_{x \rightarrow 1} (x^2 + 2x) = 3.
+\]
+
+\textit{Solution} \: Let \(f(x) = x^2 + 2x\). We aim to show that for any
+\(\epsilon > 0\) there exists some \(\delta > 0\) such that \(|x - 1| < \delta
+\Rightarrow |f(x) - 3| < \epsilon\).
+
+Given \(\epsilon > 0\), choose \(\delta = \min\{1, \frac{\epsilon}{3}\}\).
+
+\[
+  \begin{aligned}
+    |f(x) - 3| & < \epsilon \\
+    |x^2 + 2x - 3| & < \epsilon \\
+    |x^2 + 3x - x - 3| & < \epsilon \\
+    |x(x + 3) - (x + 3)| & < \epsilon \\
+    |(x + 3)(x - 1)| & < \epsilon \\
+    |x + 3||x - 1| & < \epsilon \\
+  \end{aligned}
+\]
+
+\end{document}

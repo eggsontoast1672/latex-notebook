@@ -1,0 +1,38 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+
+\title{Products, Relations, and the Integers}
+\author{Paul Zupan}
+\date{Not Published}
+
+\newtheorem{definition}{Definition}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+As we have seen, the foundation of mathematics lies in set theory. That is, all
+mathematical objects are constructed in terms of sets.
+
+\section{The Cartesian Product}
+
+\begin{definition}
+  Let \(A\) and \(B\) be sets. The Cartesian product of \(A\) and \(B\),
+  denoted \(A \times B\), is the set of all pairs of the form \((a, b)\) where
+  \(a \in A\) and \(b \in B\).
+\end{definition}
+
+\section{The Integers}
+
+We now have the tools required to construct the integers. Integers are whole
+numbers, which can be positive or negative. The first step towards this
+definition is defining an equivalence relation \(\sim\) on the set \(\mathbb{N}
+\times \mathbb{N}\). We say that \((a, b) \sim (c, d)\) if and only if \(a + d
+= b + c\). Finally, we define the set of integers as \(\mathbb{Z} = (\mathbb{N}
+\times \mathbb{N})/\sim\).
+
+\end{document}

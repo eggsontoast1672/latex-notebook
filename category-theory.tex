@@ -1,0 +1,178 @@
+\documentclass{article}
+
+\usepackage{amssymb}
+\usepackage{tikz-cd}
+
+\begin{document}
+
+\section{Classical Category Theory}
+
+\subsection{Universal Properties}
+
+\paragraph{What are initial and terminal objects in a category?}
+
+A terminal object is a special object in a category which is "final" in a
+universal way. Formally, an object \(T \in \mathcal{C}\) is terminal if and
+only if for every object \(X \in \mathcal{C}\) there exists a unique arrow \(X
+\to T\). Not all categories have terminal objects, but most of the categories
+that are commonly studied do. It also happens that all terminal objects in a
+fixed category are uniquely isomorphic.
+
+\textit{Proof} \: Let \(T_1, T_2 \in \mathcal{C}\) be terminal objects. Since
+\(T_1\) is terminal, there exists a unique morphism \(f : T_2 \to T_1\).
+Similarly, there exists a unique morphism \(g : T_1 \to T_2\). Their
+composition is an arrow \(g \circ f : T_1 \to T_1\). By the universal property
+of \(T_1\), there is a unique arrow \(T_1 \to T_1\), so \(g \circ f =
+1_{T_1}\). Thus, \(f\) and \(g\) are a unique pair of inverses, so \(T_1\) is
+uniquely isomorphic to \(T_2\) as required. \(\square\)
+
+In the category \textbf{Set}, the terminal object is the singleton set, denoted
+by \(1 = \{*\}\). Think about any arrow \(A \to 1\) from an arbitrary set \(A\)
+to the singleton set. The only function that we could possibly define between
+those two sets is the constant function \(a \mapsto *\). We simply have no
+choice as to where to send \(a\).
+
+In a preorder category \(\mathcal{P}\), the terminal object follows the
+intuitive idea of the "largest" element. For example's sake, take the preorder
+\((\{1, 2, 3\}, \leq)\). If we think of this preorder as a category, the
+terminal object would be \(3\) because for any element \(x\), we have \(x \leq
+3\). We don't have to worry about uniqueness of arrows here since every arrow
+in a preorder category is unique.
+
+The dual concept of a terminal object is an initial object, and it encapsulates
+the concept of something which comes "first" in a category. An object \(I \in
+\mathcal{C}\) is initial if and only if for every object \(X \in \mathcal{C}\)
+there exists a unique arrow \(I \to X\). We could also say that an object is
+initial in \(\mathcal{C}\) if and only if it is terminal in
+\(\mathcal{C}^{op}\). This duality induces some immediate facts about initial
+objects, the most prominent of which being that any two terminal objects must
+be uniquely isomorphic. Indeed, not all categories have initial objects.
+
+In \textbf{Set}, the initial object is the empty set \(\varnothing\).
+Considering any arrow \(\varnothing \to A\), the only possible function which
+fits is the empty function. We need to assign an output value to every input
+value, but since there are no input values to assign to, we are already done
+and had no choice.
+
+In a preorder category, the initial object is simply the smallest object in the
+set, for similar reasons as the terminal object.
+
+\paragraph{What are cones and cocones?}
+
+A cone over a diagram is hard to explain, but easy to picture. Consider any
+diagram of a category. For the sake of example, I will use a category which has
+only two objects \(A\) and \(B\), with no nontrivial morphisms. To construct a
+cone over this diagram, add a vertex object \(V\) and a morphism from \(V\) to
+each object in the original diagram. We now have the following diagram:
+
+\[
+  \begin{tikzcd}
+      & V \arrow[ld] \arrow[rd] &   \\
+    A &                         & B
+  \end{tikzcd}
+\]
+
+Here is another example. Suppose we start with a cospan structure consisting of
+an object \(C\) and two morphisms pointing into \(C\) from objects \(A\) and
+\(B\):
+
+\[
+  \begin{tikzcd}
+    A \arrow[r] & C & B \arrow[l]
+  \end{tikzcd}
+\]
+
+Since we have an arrow in the starting diagram this time, it is important to
+note that a well-defined cone over a diagram must result in a commuting
+diagram. The cone would then look like this:
+
+\[
+  \begin{tikzcd}
+                & V \arrow[ld] \arrow[rd] \arrow[d, dashed] &             \\
+    A \arrow[r] & C                                         & B \arrow[l]
+  \end{tikzcd}
+\]
+
+The arrow down the center is dashed because it can be inferred from the others
+by composition. Quickly, a cocone is the dual notion of a cone. Instead of a
+vertex \(V\) and arrows pointing out of it to the other objects, the cocone has
+a vertex \(V\) with arrows pointing from the other objects \textit{into} it. A
+cocone over the previous example would look like this:
+
+\[
+  \begin{tikzcd}
+    A \arrow[r] \arrow[rd] & C \arrow[d, dashed] & B \arrow[l] \arrow[ld] \\
+                           & V                   &
+  \end{tikzcd}
+\]
+
+\paragraph{What are limits and colimits?}
+
+The limit over a diagram \(D\) is the terminal object in the category of cones
+over \(D\). Dually, the colimit of a diagram \(D\) is the initial object in the
+category of cocones over \(D\). Let us look at limits first.
+
+We should first define what the category of cones over \(D\) means. Consider
+the category from before which contains only the objects \(A\) and \(B\).
+Henceforth, call the diagram which illustrates this category \(D\). In the
+category of cones over \(D\), an object is simply the following cone:
+
+\[
+  \begin{tikzcd}
+      & V \arrow[ld] \arrow[rd] &   \\
+    A &                         & B
+  \end{tikzcd}
+\]
+
+The objects in this category, then, are simply ordinary objects with the extra
+requirement that they must have morphisms going to \(A\) and \(B\). A morphism
+in this category would look like this:
+
+\[
+  \begin{tikzcd}
+      & U \arrow[ldd, bend right] \arrow[rdd, bend left] \arrow[d] &   \\
+      & V \arrow[ld] \arrow[rd]                                    &   \\
+    A &                                                            & B
+  \end{tikzcd}
+\]
+
+The morphism in question here is the one \(U \to V\). Note that \(U\) and \(V\)
+are both the vertices of cones over \(D\). We are now ready for the idea of a
+limit. The limit over the diagram \(D\) is a cone \(L\) over \(D\) such that
+for any other cone \(X\) over \(D\), there exists a unique morphism \(X \to L\)
+making the entire diagram commute. Here is the situation illustrated:
+
+\[
+  \begin{tikzcd}
+      & X \arrow[ldd, bend right] \arrow[rdd, bend left] \arrow[d, dashed] &   \\
+      & L \arrow[ld] \arrow[rd]                                            &   \\
+    A &                                                                    & B
+  \end{tikzcd}
+\]
+
+If you have studied a lot of category theory before, you may have noticed that
+this diagram exactly describes \(L\) as the product of \(A\) and \(B\), and you
+would be right to think that. The product \(A \times B\) can simply be
+described as the limit over \(A\) and \(B\). In a similar fashion, the
+coproduct \(A + B\) is just the colimit over the objects \(A\) and \(B\).
+
+Taking the limit of other diagrams also leads to interesting constructions. Let
+us return to another example introduced before, the diagram of the cospan \(A
+\rightarrow C \leftarrow B\). If we take the limit of this diagram, we get the
+following result:
+
+\[
+  \begin{tikzcd}
+    X \arrow[rd, dashed] \arrow[rrd, bend left] \arrow[rdd, bend right] &                       &             \\
+                                                                        & L \arrow[d] \arrow[r] & B \arrow[d] \\
+                                                                        & A \arrow[r]           & C
+  \end{tikzcd}
+\]
+
+This is precisely equivalent to another categorical construction, the pullback.
+Again, if we take the colimit of the \textit{span} \(A \leftarrow C \rightarrow
+B\), we get a diagram equivalent to that of a pushout. Limits and colimits are
+very interesting and useful universal properties which give rise to all sorts
+of cool constructions.
+
+\end{document}

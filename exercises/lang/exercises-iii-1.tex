@@ -1,0 +1,109 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+\usepackage{times}
+
+\newenvironment{exercise}[1]
+  {\begin{enumerate}[left=0pt] \item[\textbf{#1.}]}
+  {\end{enumerate}}
+
+\newenvironment{solution}{\paragraph{Solution.}}{\hfill$\blacksquare$}
+
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+
+\begin{exercise}{1}
+  In Example 3, give $Df$ as a function of $x$ when $f$ is the function:
+
+  \begin{enumerate}[label=(\alph*), noitemsep]
+    \item $f(x) = \sin x$
+    \item $f(x) = e^x$
+    \item $f(x) = \log x$
+  \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+  For each function, we simply have to compute its derivative. Assume that $\log
+  x$ here means $\log_{10} x$.
+
+  \begin{enumerate}[label=(\alph*), noitemsep]
+    \item $Df(x) = \cos x$
+    \item $Df(x) = e^x$
+    \item $Df(x) = \frac{1}{x\ln 10}$
+  \end{enumerate}
+\end{solution}
+
+\begin{exercise}{2}
+  Prove the statement about translations in Example 13.
+\end{exercise}
+
+\begin{solution}
+  There are two facts which we must show:
+
+  \begin{enumerate}
+    \item If $u_1$, $u_2$ are elements of $V$, then $T_{u_1 + u_2} = T_{u_1} \circ T_{u_2}$.
+    \item If $u$ is an element of $V$, then $T_u : V \to V$ has an inverse
+      mapping which is nothing but the translation $T_{-u}$.
+  \end{enumerate}
+
+  First, let $u_1$ and $u_2$ be vectors in $V$. Then for any vector $v$ of $V$,
+  the following holds:
+
+  \[
+    \begin{aligned}
+      T_{u_1 + u_2}(v) & = v + u_1 + u_2 = v + u_2 + u_1          \\
+                       & = T_{u_2}(v) + u_1 = T_{u_1}(T_{u_2}(v)) \\
+                       & = (T_{u_1} \circ T_{u_2})(v)             \\
+    \end{aligned}
+  \]
+
+  Next, let $u$ be a vector in $V$. For any vector $v$ in $V$, the following
+  holds:
+
+  \[
+    \begin{aligned}
+      (T_{-u} \circ T_u)(v) & = v + u - u = v \\
+      (T_u \circ T_{-u})(v) & = v - u + u = v \\
+    \end{aligned}
+  \]
+
+  So the properties hold as required.
+\end{solution}
+
+\begin{exercise}{3}
+  In Example 5, give $L(X)$ when $X$ is the vector:
+
+  \begin{enumerate}[label=(\alph*), noitemsep]
+    \item $(1, 2, -3)$
+    \item $(-1, 5, 0)$
+    \item $(2, 1, 1)$
+  \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+  \begin{enumerate}[label=(\alph*), noitemsep]
+    \item $L(X) = 2 \cdot 1 + 3 \cdot 2 - 1 \cdot (-3) = 11$
+    \item $L(X) = 2 \cdot (-1) + 3 \cdot 5 - 1 \cdot 0 = 13$
+    \item $L(X) = 2 \cdot 2 + 3 \cdot 1 - 1 \cdot 1 = 6$
+  \end{enumerate}
+\end{solution}
+
+\begin{exercise}{4}
+  Let $F : \R \to \R^2$ be the mapping such that $F(t) = (e^t, t)$. What is
+  $F(1)$, $F(0)$, $F(-1)$?
+\end{exercise}
+
+\begin{solution}
+  \begin{itemize}[noitemsep]
+    \item $F(1) = (e, 1)$
+    \item $F(0) = (1, 0)$
+    \item $F(-1) = (1/e, -1)$
+  \end{itemize}
+\end{solution}
+
+\end{document}

@@ -1,0 +1,50 @@
+\documentclass{zupan}
+
+\title{Lang UG Algebra: Exercises 1}
+\author{Paul Zupan}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{exercise}{1}
+  If $n, m$ are integers $\geq 1$ and $n \geq m$, define the \textbf{binomial
+  coefficients} \[\binom{n}{m} = \frac{n!}{m!(n - m)!}.\] As usual, $n! = n
+  \cdot (n - 1) \cdots 1$ is the product of the first $n$ integers. We define
+  $0! = 1$ and $\binom{n}{0} = 1$. Prove that \[\binom{n}{m - 1} + \binom{n}{m}
+  = \binom{n + 1}{m}.\]
+\end{exercise}
+
+\begin{solution}
+  We show this using an alebraic argument:
+
+  \[
+    \begin{aligned}
+      \binom{n}{m - 1} + \binom{n}{m}
+        & = \frac{n!}{(m - 1)!(n - m + 1)!} + \frac{n!}{m!(n - m)!} \\
+        & = \frac{n!m}{m!(n - m + 1)!} + \frac{n!(n - m + 1)}{m!(n - m + 1)!} \\
+        & = \frac{n!m + n!(n - m + 1)}{m!(n - m + 1)!} \\
+        & = \frac{n!(m + n - m + 1)}{m!(n - m + 1)!} \\
+        & = \frac{n!(n + 1)}{m!(n + 1 - m)!} \\
+        & = \frac{(n + 1)!}{m!(n + 1 - m)!} \\
+        & = \binom{n + 1}{m} \\
+    \end{aligned}
+  \]
+
+  Hence the identity holds as required.
+\end{solution}
+
+\begin{exercise}{2}
+  Prove by induction that for any integers $x, y$ we have \[(x + y)^n = \sum_{i
+  = 0}^n \binom{n}{i} x^iy^{n - i} = y^n + \binom{n}{1}xy^{n - 1} +
+  \binom{n}{2}x^2y^{n - 2} + \cdots + x^n.\]
+\end{exercise}
+
+\begin{solution}
+  We prove this by induction on $n$.
+
+  TODO: Finish this problem.
+\end{solution}
+
+\end{document}

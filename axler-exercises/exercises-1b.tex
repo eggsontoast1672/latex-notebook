@@ -1,0 +1,27 @@
+\documentclass[12pt]{article}
+
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+
+\newenvironment{exercise}{\paragraph{Exercise.}}{}
+\newenvironment{solution}{\paragraph{Solution.}}{}
+
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+
+\begin{exercise}
+  A function $f : \R \to \R$ is called \textit{even} if \[f(-x) = f(x)\] for
+  all $x \in \R$. A function $f : \R \to \R$ is called \textit{odd} if \[f(-x)
+  = -f(x)\] for all $x \in \R$. Let $V_e$ denote the set of real-valued even
+  functions on $\R$ and let $V_o$ denote the set of real-valued odd functions
+  on $\R$. Show that $\R^{\R} = V_e \oplus V_o$.
+\end{exercise}
+
+\begin{solution}
+  We aim to show that any function $f : \R \to \R$ can be uniquely represented
+  as the sum of an even function and an odd function.
+\end{solution}
+
+\end{document}

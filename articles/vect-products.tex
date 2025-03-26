@@ -1,0 +1,212 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+\usepackage{tikz-cd}
+
+\title{Products of Vector Spaces}
+\author{Paul Zupan}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+The product is a ubiquitous notion in mathematics, and it turns out that it can
+be extended to vector spaces. There are three main kinds of products defined on
+vector spaces, those being the direct product, the formal product, and the
+tensor product. Each of these products is special for their own reason, and
+each has a universal property associated with it.
+
+\section{The Direct Product of Vector Spaces}
+
+\subsection{Definition of the Direct Product}
+
+The first product that we will examine is the direct product of vector spaces.
+Let $V$ and $W$ be vector spaces. Their direct product, denoted $V \times W$,
+is a vector space consisting of ordered pairs of vectors from $V$ and $W$.
+Explicitly:
+
+\begin{displaymath}
+  V \times W = \{(\vec{v}, \vec{w}) \mid \vec{v} \in V, \vec{w} \in W\}
+\end{displaymath}
+
+Vector addition and scalar multiplication are defined component-wise. We should
+verify that the product of the underlying sets endowed with this structure does
+indeed form a vector space. First, we require that vector addition be
+associative. This follows directly from the associativity in the addition
+operation of the underlying vector spaces. Let $(\vec{v}_1, \vec{w}_2)$,
+$(\vec{v}_2, \vec{w}_2)$, and $(\vec{v}_3, \vec{w}_3)$ be vectors in $V \times
+W$:
+
+\begin{displaymath}
+  \begin{split}
+    ((\vec{v}_1, \vec{w}_1) + (\vec{v}_2, \vec{w}_2)) + (\vec{v}_3, \vec{w}_3)
+      & = (\vec{v}_1 + \vec{v}_2, \vec{w}_1 + \vec{w}_2) + (\vec{v}_3, \vec{w}_3)    \\
+      & = (\vec{v}_1 + \vec{v}_2 + \vec{v}_3, \vec{w}_1 + \vec{w}_2 + \vec{w}_3)     \\
+      & = (\vec{v}_1, \vec{w}_1) + (\vec{v}_2 + \vec{v}_3, \vec{w}_2 + \vec{w}_3)    \\
+      & = (\vec{v}_1, \vec{w}_1) + ((\vec{v}_2, \vec{w}_2) + (\vec{v}_3, \vec{w}_3)) \\
+  \end{split}
+\end{displaymath}
+
+Note that on the second line, we do not need to specify the bracketing because
+of the associativity of the underlying addition operations. We should also
+verify that this operation is commutative. Let $(\vec{v}_1, \vec{w}_1)$ and
+$(\vec{v}_2, \vec{w}_2)$ be vectors in $V \times W$:
+
+\begin{displaymath}
+  \begin{split}
+    (\vec{v}_1, \vec{w}_1) + (\vec{v}_2, \vec{w}_2)
+      & = (\vec{v}_1 + \vec{v}_2, \vec{w}_1 + \vec{w}_2)  \\
+      & = (\vec{v}_2 + \vec{v}_1, \vec{w}_2 + \vec{w}_1)  \\
+      & = (\vec{v}_2, \vec{w}_2) + (\vec{v}_1, \vec{w}_1) \\
+  \end{split}
+\end{displaymath}
+
+Again, the commutativity comes directly from the underlying spaces. Finally, we
+should verify that every vector has an additive inverse and that there exists
+an additive identity. For each vector $(\vec{v}, \vec{w})$, its additive
+inverse is $(-\vec{v}, -\vec{w})$, where $-\vec{v}$ and $-\vec{w}$ are the
+additive inverses of $\vec{v}$ and $\vec{w}$ respectively. In addition, the
+zero vector is $(\vec{0}_V, \vec{0}_W)$, where $\vec{0}_V$ is the additive
+identity in $V$, and $\vec{0}_W$ is the additive identity in $W$. Checking that
+these are truly the inverses and identity is left as an exercise to the reader.
+
+% TODO Verify axioms for scalar multiplication
+
+\subsection{Dimension of the Direct Product Space}
+
+One question which naturally arises is, how could we could we construct a basis
+for this space? Let $\mathcal{B} = \{\vec{b}_1, \dots, \vec{b}_n\}$ be a basis
+of $V$ and $\mathcal{C} = \{\vec{c}_1, \dots, \vec{c}_m\}$ be a basis of $W$.
+The question becomes, given a vector in $V \times W$, can we write it uniquely
+in terms of the bases $\mathcal{B}$ and $\mathcal{C}$? It turns out that yes,
+it is possible. We can define a basis $\mathcal{D}$ of $V \times W$ as the
+following:
+
+\begin{displaymath}
+  \mathcal{D} = \{(b_1, 0), \dots, (b_m, 0), (0, c_1), \dots, (0, c_n)\}
+\end{displaymath}
+
+In order to formally check that this set forms a basis of $V \times W$, we must
+ensure that it is a linearly independent set and that it spans $V \times W$. To
+verify that $\mathcal{D}$ is a linearly independent set, we need to ensure that
+given any linear combination of the basis vectors which is the zero vector must
+have trivial coefficients.
+
+\begin{displaymath}
+  \begin{aligned}
+    a_1(b_1, 0) + \cdots + a_m(b_m, 0) + a_{m + 1}(0, c_1) + \cdots + a_{m + n}(0, c_n) & = 0 \\
+    (a_1b_1, 0) + \cdots + (a_mb_m, 0) + (0, a_{m + 1}c_1) + \cdots + (0, a_{m + n}c_n) & = 0 \\
+    (a_1b_1 + \cdots + a_mb_m, a_{m + 1}c_1 + \cdots + a_{m + n}c_n)                    & = 0 \\
+  \end{aligned}
+\end{displaymath}
+
+Since the left hand side equals the zero vector of $V \times W$, each component
+of the pair must be the zero vector of its respective space. But since
+$\mathcal{B}$ and $\mathcal{C}$ form bases of $V$ and $W$ respectively, the
+scalars must be trivial. Thus, the basis $\mathcal{D}$ forms a linearly
+independent set.
+
+We also need to check that the span of $\mathcal{D}$ is all of $V \times W$.
+This is a bit easier to show. We know that since $\mathcal{B}$ is a basis of
+$V$, it must span all of $V$. Likewise, $\mathcal{C}$ spans all of $W$.
+Specifying a vector in $V \times W$ amounts to specifying a vector in $V$ and
+one in $W$, and since we can specify any vector in both of those spaces, we
+have enough basis elements to specify any element in $V \times W$.
+
+The dimension of $V \times W$ follows quickly. We have one basis element in
+$\mathcal{D}$ for each one in $\mathcal{B}$ and each one in $\mathcal{C}$, so
+the dimensions of the spaces involved are related in the following way:
+
+\begin{displaymath}
+  \dim(V \times W) = \dim V + \dim W
+\end{displaymath}
+
+\subsection{Universal Property of the Direct Product}
+
+The direct product of vector spaces is also the product of spaces in a
+categorical sense. To see this, we first need to examine the relationship that
+the space $V \times W$ has with its operand spaces $V$ and $W$. In particular,
+we can define two naturally surjective maps $P : V \times W \to V$ and $Q : V
+\times W \to W$ which extract the first or second element of the ordered pair
+respectively. More explicitly, we have
+
+\begin{displaymath}
+  \begin{aligned}
+    P(v, w) & = v \\
+    Q(v, w) & = w \\
+  \end{aligned}
+\end{displaymath}
+
+The following universal property describes the direct product of vector spaces.
+For any vector space $U$ and any two linear transformations $S : U \to V$ and
+$T : U \to W$, there exists a unique linear transformation $K : U \to V \times
+W$ such that $P \circ K = S$ and $Q \circ K = T$. This situation can also be
+described with a commutative diagram:
+
+\begin{displaymath}
+  \begin{tikzcd}[row sep=huge]
+    & U \ar[ddl, bend right, "S"'] \ar[ddr, bend left, "T"] \ar[d, dashed, "K"] & \\
+    & V \times W \ar[dl, "P"] \ar[dr, "Q"'] & \\
+    V & & W \\
+  \end{tikzcd}
+\end{displaymath}
+
+There exists a unique morphism $K$ such that the diagram commutes. This is
+relatively simple to prove. Let $K(u) = (F(u), G(u))$, where $F : U \to V$ and
+$G : U \to W$ are linear transformations. Since the diagram commutes, we have
+the following for all $u \in U$:
+
+\begin{displaymath}
+  \begin{aligned}
+    (P \circ K)(u) & = S(u) \\
+    P(F(u), G(u))  & = S(u) \\
+    F(u)           & = S(u) \\
+  \end{aligned}
+\end{displaymath}
+
+This means that $F$ must equal $S$ as functions. By similar logic, $G = T$. So,
+the only possible definition for $K$ is $K(u) = (S(u), T(u))$. We will return
+to this universal property later on in the article.
+
+The direct product is the easiest way to endow the Cartesian product of vector
+spaces with a vector space structure, but it is not the only way. The tensor
+product of vector spaces is possibly a more natural definition for the product
+of vector spaces due to the manner in which it handles scalar multiplication.
+To get there, however, we first need to look at the formal product of spaces.
+
+\section{The Formal Product of Vector Spaces}
+
+If the direct product is the most ``direct'' way of adding structure to pairs
+of vectors, the formal product is the laziest. Instead of defining addition and
+multiplication to be component-wise, we define absolutely no relations between
+vectors in the product space, except when absolutely necessary. This is the
+``formal'' part of the formal product.
+
+\subsection{Definition of the Formal Product}
+
+Let $V$ and $W$ be vector spaces over a field $\mathbb{K}$. Their formal
+product, denoted $V * W$, is the set of all vectors of the following form:
+
+\begin{displaymath}
+  V * W = \{v * w \mid v \in V, w \in W\}
+\end{displaymath}
+
+If you are familiar with free objects, the formal product $V * W$ can be
+thought of as the free vector space generated by $V \times W$ as a basis. See
+the section on the universal property for a deeper dive of that concept.
+
+\subsection{Universal Property of the Formal Product}
+
+The diagram for the universal property of the formal product is the following:
+
+\begin{displaymath}
+  V \times W
+\end{displaymath}
+
+\end{document}

@@ -1,0 +1,83 @@
+\documentclass{zupan}
+
+\usepackage{enumitem}
+
+\begin{document}
+
+\begin{problem}{1}
+  For each of the following subsets of $\mathbb{F}^3$, determine whether it is
+  a subspace of $\mathbb{F}^3$.
+
+  \begin{enumerate}[label=(\alph*), noitemsep]
+    \item $\{(x_1, x_2, x_3) \in \mathbb{F}^3 : x_1 + 2x_2 + 3x_3 = 0\}$
+    \item $\{(x_1, x_2, x_3) \in \mathbb{F}^3 : x_1 + 2x_2 + 3x_3 = 4\}$
+    \item $\{(x_1, x_2, x_3) \in \mathbb{F}^3 : x_1x_2x_3 = 0\}$
+    \item $\{(x_1, x_2, x_3) \in \mathbb{F}^3 : x_1 = 5x_3\}$
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  (a) To check that this set is a subspace of $\mathbb{F}^3$, we first need to
+  ensure that it contains the zero vector. At a glace, we can see that it does,
+  since $0 + 2 \cdot 0 + 3 \cdot 0 = 0$. Next, we need to check that this set
+  is closed under scalar multiplication. Let $v = (x_1, x_2, x_3)$ be a vector
+  and $c \in \mathbb{F}$ be a scalar.
+
+  \[
+    \begin{aligned}
+      cx_1 + 2cx_2 + 3cx_3
+        & = c(x_1 + 2x_2 + 3x_3) \\
+        & = c(0) \\
+        & = 0 \\
+    \end{aligned}
+  \]
+
+  We found that $cv$ is in the subset, so this set is closed under scalar
+  multiplication. Finally, we should check that it is closed under addition.
+  Let $v = (x_1, x_2, x_3)$ and $w = (y_1, y_2, y_3)$ be vectors.
+
+  \[
+    \begin{aligned}
+      x_1 + y_1 + 2(x_2 + y_2) + 3(x_3 + y_3)
+        & = x_1 + y_1 + 2x_2 + 2y_2 + 3x_3 + 3y_3 \\
+        & = x_1 + 2x_2 + 3x_3 + y_1 + 2y_2 + 3y_3 \\
+        & = 0 + 0 \\
+        & = 0 \\
+    \end{aligned}
+  \]
+
+  Hence $v + w$ is in the subset, so it is closed under vector addition. It has
+  been shown that this subset is a subspace of $\mathbb{F}^3$.
+
+  (b) This subset is definitely not a subspace. The reason is that it does not
+  include the zero vector. This is the case because as we showed in the
+  previous part, $0 + 2(0) + 3(0) = 0$, which does not equal four. We need not
+  explain further.
+
+  (c) This subset is also not a subspace. Consider the vectors $(1, 1, 0)$ and
+  $(0, 0, 1)$. They are each in the subset since their elements have a product
+  of zero. However, their sum is the vector $(1, 1, 1)$, whose elements have a
+  nonzero product. Since this subset is not closed under vector addition, it is
+  not a subspace.
+
+  (d) This last subset is in fact a subspace. It can be easily checked that the
+  zero vector satisfies the conditions. If $v = (x_1, x_2, x_3)$ is a vector
+  and $c$ is a scalar, then $cv$ is in the subset because $cx_1 = 5cx_3$. If $w
+  = (y_1, y_2, y_3)$ is also a vector in the subset, then $v + w$ a member
+  because $x_1 + y_1 = 5x_3 + 5y_3$. Thus, the subset is closed under scalar
+  multiplication and addition, so it is a subspace.
+\end{solution}
+
+\begin{problem}{23}
+  Prove or give a counterexample: If $V_1$, $V_2$, $U$ are subspaces of $V$
+  such that \[V = V_1 \oplus U \quad \text{and} \quad V = V_2 \oplus U,\] then
+  $V_1 = V_2$.
+\end{problem}
+
+\begin{solution}
+  Take $V = \mathbb{R}^2$, $V_1 = \Span\{(1, 0)\}$, $V_2 = \Span\{(0, 1)\}$,
+  and $U = \Span\{(1, 1)\}$. It is easily verifiable that $V = V_1 \oplus U$
+  and $V = V_2 \oplus U$, but $V_1 \neq V_2$.
+\end{solution}
+
+\end{document}

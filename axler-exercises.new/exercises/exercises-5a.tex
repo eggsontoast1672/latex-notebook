@@ -1,0 +1,84 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\begin{problem}{5A \#1}
+  Suppose $T \in \lin(V)$ and $U$ is a subspace of $V$.
+
+  \begin{enumerate}[(a), noitemsep]
+    \item Prove that if $U \subseteq \nul T$, then $U$ is invariant under $T$.
+    \item Prove that if $\range T \subseteq U$, then $U$ is invariant under $T$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  Suppose that $U \subseteq \nul T$ and $v \in U$. Since $v$ is an element of
+  $U$, it is an element of $\nul T$ by hypothesis. Thus, $Tv = 0$. Since $U$
+  is a subspace, we know that $0 \in U$. Then $Tv \in U$ as required.
+
+  Suppose now that $\range T \subseteq U$ and $v \in U$. By definition, $Tv \in
+  \range T$, and $\range T$ is a subspace of $U$, so $Tv \in U$ as required.
+\end{solution}
+
+\begin{problem}{5A \#2}
+  Suppose that $T \in \lin(V)$ and $V_1, \dots, V_m$ are subspaces of $V$
+  invariant under $T$. Prove that $V_1 + \cdots + V_m$ is invariant under $T$.
+\end{problem}
+
+\begin{solution}
+  Let $v \in V_1 + \cdots + V_m$ be a vector. We can write $v = v_1 + \cdots +
+  v_m$ where $v_i$ is some vector in $V_i$. Since each $V_i$ is an invariant
+  subspace under $T$, each $Tv_i$ is an element of $V_i$. This means that $Tv_1
+  + \cdots + Tv_m$ is the sum of elements from $V_1, \dots, V_m$, so it is an
+  element of $V_1 + \cdots + V_m$. Thus, we can conclude that $Tv \in V_1 +
+  \cdots + V_m$. This completes the proof.
+\end{solution}
+
+\begin{problem}{5A \#3}
+  Suppose $T \in \lin(V)$. Prove that the intersection of every collection of
+  subspaces of $V$ invariant under $T$ is invariant under $T$.
+\end{problem}
+
+\begin{solution}
+  Let $U_1, \dots, U_n$ be a collection of subspaces of $V$ which are invariant
+  under $T$. We aim to show that
+
+  \[U = \bigcap_{i = 1}^n U_i\]
+
+  Is a subspace of $V$ which is invariant under $T$. First, the intersection of
+  subspaces is in general a subspace, so $U$ must be a subspace of $V$.
+
+  Let $v \in U$ be a vector. We aim to show that $Tv \in U$. Since each $U_i$
+  is invariant under $T$ and $v$ is an element of $U_i$, $Tv$ must be an
+  element of $U_i$. Thus, $Tv \in U$. We conclude that $U$ is invariant under
+  $T$.
+\end{solution}
+
+\begin{problem}{5A \#8}
+  Suppose $P \in \lin(V)$ is such that $P^2 = P$. Prove that if $\lambda$ is an
+  eigenvalue of $P$, then $\lambda = 0$ or $\lambda = 1$.
+\end{problem}
+
+\begin{solution}
+  Suppose that $\lambda$ is an eigenvalue of $P$. That means that there exists
+  a vector $v \in V$ such that $Pv = \lambda v$. Performing some algebra:
+
+  \[
+    \begin{aligned}
+      Pv   & = \lambda v    \\
+      P^2v & = P(\lambda v) \\
+      Pv   & = \lambda Pv   \\
+      Pv   & = \lambda^2v   \\
+    \end{aligned}
+  \]
+
+  Thus, we have $\lambda v = \lambda^2v$. Performing some more algebra:
+
+  \[
+    \begin{aligned}
+      \lambda v & = \lambda^2v \\
+    \end{aligned}
+  \]
+\end{solution}
+
+\end{document}

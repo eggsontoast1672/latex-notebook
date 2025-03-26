@@ -1,0 +1,136 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+\usepackage{times}
+
+\newenvironment{exercise}
+  {\begin{enumerate}[left=0pt] \item[\textbf{\theexercise.}]}
+  {\end{enumerate} \stepcounter{exercise}}
+
+\newenvironment{solution}{\paragraph{Solution.}}{\hfill$\blacksquare$}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+
+\newcounter{exercise}
+\setcounter{exercise}{1}
+
+\begin{exercise}
+  Write out all functions $f : \{1, 2, 3\} \to \{a, b\}$. How many are there?
+  How many are injective? How many are surjective? How many are both?
+\end{exercise}
+
+\begin{solution}
+  The possible functions are as follows:
+
+  \begin{itemize}[noitemsep]
+    \item $f(1) = a, f(2) = a, f(3) = a$
+    \item $f(1) = a, f(2) = a, f(3) = b$
+    \item $f(1) = a, f(2) = b, f(3) = a$
+    \item $f(1) = a, f(2) = b, f(3) = b$
+    \item $f(1) = b, f(2) = a, f(3) = a$
+    \item $f(1) = b, f(2) = a, f(3) = b$
+    \item $f(1) = b, f(2) = b, f(3) = a$
+    \item $f(1) = b, f(2) = b, f(3) = b$
+  \end{itemize}
+
+  There are eight possible functions, none of which are injective, six of which
+  are surjective, and none of which are both.
+\end{solution}
+
+\begin{exercise}
+  Write out all functions $f : \{1, 2\} \to \{a, b, c\}$. How many are there?
+  How many are injective? How many are surjective? How many are both?
+\end{exercise}
+
+\begin{solution}
+  The possible functions are as follows:
+
+  \begin{itemize}[noitemsep]
+    \item $f(1) = a, f(2) = a$
+    \item $f(1) = a, f(2) = b$
+    \item $f(1) = a, f(2) = c$
+    \item $f(1) = b, f(2) = a$
+    \item $f(1) = b, f(2) = b$
+    \item $f(1) = b, f(2) = c$
+    \item $f(1) = c, f(2) = a$
+    \item $f(1) = c, f(2) = b$
+    \item $f(1) = c, f(2) = c$
+  \end{itemize}
+
+  There are nine possible functions, six of which are injective, none of which
+  are surjective, and none of which are both.
+\end{solution}
+
+\begin{exercise}
+  Consider the function $f : \{1, 2, 3, 4, 5\} \to \{1, 2, 3, 4\}$ given by the
+  table below:
+
+  \begin{center}
+    \begin{tabular}{c||c|c|c|c|c}
+      $x$    & 1 & 2 & 3 & 4 & 5 \\ \hline
+      $f(x)$ & 3 & 2 & 4 & 1 & 2 \\
+    \end{tabular}
+  \end{center}
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Is $f$ injective? Explain.
+    \item Is $f$ surjective? Explain.
+  \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+  The function $f$ is not injective. Formally, this is because there exist two
+  elements in the domain, namely 2 and 5, which map to 2 in the codomain. In
+  fact, there exists no injective mapping with this domain and codomain, since
+  the codomain is smaller than the domain. This necessitates overlap in the
+  mappings.
+
+  Additionaly, $f$ is surjective. To see this, consider the image of $f$, which
+  is the set $\{1, 2, 3, 4\}$. This set is identical to the codomain of $f$, so
+  the function must be surjective.
+\end{solution}
+
+\begin{exercise}
+  For each function given below, determine whether or not the function is
+  injective and whether or not the function is surjective.
+
+  \begin{enumerate}[label=(\alph*)]
+    \item $f : \N \to \N$ given by $f(n) = n + 4$.
+    \item $f : \Z \to \Z$ given by $f(n) = n + 4$.
+    \item $f : \Z \to \Z$ given by $f(n) = 5n - 8$.
+    \item $f : \Z \to \Z$ given by $f(n) =
+      \begin{cases}
+        n/2       & \text{if $n$ is even} \\
+        (n + 1)/2 & \text{if $n$ is odd.} \\
+      \end{cases}$
+  \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+  (a) This function is injective but not surjective. Let us first show that it
+  is injective. Suppose that $m, n \in \N$ such that $f(m) = f(n)$. Performing
+  some algebra:
+
+  \[
+    \begin{aligned}
+      f(m)  & = f(n)  \\
+      m + 4 & = n + 4 \\
+      m     & = n     \\
+    \end{aligned}
+  \]
+
+  We have $m = n$, so $f$ is injective. To see why $f$ is not surjective,
+  suppose that there exists $n \in \N$ such that $f(n) = 2$. Then $n + 4 = 2$,
+  and subtracting 4 from both sides gives $n = -2$. However, $-2$ is not a
+  natural number, so our original assumption was contradicted. Therefore $f$
+  cannot be surjective.
+\end{solution}
+
+\end{document}

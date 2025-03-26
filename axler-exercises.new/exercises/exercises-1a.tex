@@ -1,0 +1,54 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\begin{exercise}
+  Show that $\alpha + \beta = \beta + \alpha$ for all $\alpha, \beta \in \C$.
+\end{exercise}
+
+\begin{solution}
+  Let $\alpha = a_1 + b_1i$ and $\beta = a_2 + b_2i$ be complex numbers.
+
+  \[
+    \begin{aligned}
+      (a_1 + b_1i) + (a_2 + b_2i)
+        & = (a_1 + a_2) + (b_1 + b_2)i  \\
+        & = (a_2 + a_1) + (b_2 + b_1)i  \\
+        & = (a_2 + b_2i) + (a_1 + b_1i) \\
+    \end{aligned}
+  \]
+\end{solution}
+
+\begin{exercise}
+  Find two distinct square roots of $i$.
+\end{exercise}
+
+\begin{solution}
+  We aim to find two different complex numbers $\alpha$ and $\beta$ such that
+  $\alpha^2 = \beta^2 = i$. Suppose that $(a + bi)^2 = i$. Performing some
+  algebra:
+
+  \[
+    \begin{aligned}
+      (a + bi)^2       & = i \\
+      a^2 - b^2 + 2abi & = i \\
+    \end{aligned}
+  \]
+
+  We can interpret this result as a system of two equations:
+
+  \[
+    \begin{aligned}
+      a^2 - b^2 & = 0 \\
+      2ab       & = 1 \\
+    \end{aligned}
+  \]
+
+  From the equation $a^2 - b^2 = 0$, we can gather that $a^2 = b^2$. This means
+  that $a = b$. It is possible that $a = -b$ but it is not necessary to
+  consider this for our purposes. Substituting this in the second equation
+  gives that $2a^2 = 1$, and we can solve this for $a$ to get $a = \pm
+  \sqrt{2}/2$.
+\end{solution}
+
+\end{document}

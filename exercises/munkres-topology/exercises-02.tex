@@ -1,0 +1,108 @@
+\documentclass{zupan}
+
+\usepackage[shortlabels]{enumitem}
+
+\begin{document}
+
+\begin{problem}{1}
+  Let $f : A \to B$. Let $A_0 \subset A$ and $B_0 \subset B$.
+
+  \begin{enumerate}[(a), noitemsep]
+    \item Show that $A_0 \subset f^{-1}(f(A_0))$ and that equality holds if $f$ is injective.
+    \item Show that $f(f^{-1}(B_0)) \subset B_0$ and that equality holds if $f$ is surjective.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  Let $a \in A_0$ and $b \in B$ such that $f(a) = b$. Then $b \in f(A_0)$ and
+  $a \in f^{-1}(f(A_0))$ trivially as required. Suppose $f$ is injective. Let
+  $a \in f^{-1}(f(A_0))$. Then there exists $b \in f(A_0)$ such that $f(a) =
+  b$. Since $f$ is injective, $a$ is the unique element which maps to $b$ under
+  $f$. Thus $a \in A_0$ and $f^{-1}(f(A_0)) = A_0$ as required.
+
+  Let $b \in f(f^{-1}(B_0))$. Then there exists $a \in f^{-1}(B_0)$ such that
+  $f(a) = b$. Thus $b \in B_0$ trivially. Suppose $f$ is surjective. Let $b \in
+  B_0$. Since $f$ is surjective, there exists $a \in A$ such that $f(a) = b$.
+  Thus $a \in f^{-1}(B_0)$. It follows that $b \in f(f^{-1}(B_0))$.
+\end{solution}
+
+\begin{problem}{2}
+  Let $f : A \to B$ and let $A_i \subset A$ and $B_i \subset B$ for $i = 0$ and
+  $i = 1$. Show that $f^{-1}$ preserves inclusions, unions, intersections, and
+  differences of sets:
+
+  \begin{enumerate}[(a), noitemsep]
+    \item $B_0 \subset B_1 \Rightarrow f^{-1}(B_0) \subset f^{-1}(B_1)$.
+    \item $f^{-1}(B_0 \cup B_1) = f^{-1}(B_0) \cup f^{-1}(B_1)$.
+    \item $f^{-1}(B_0 \cap B_1) = f^{-1}(B_0) \cap f^{-1}(B_1)$.
+    \item $f^{-1}(B_0 - B_1) = f^{-1}(B_0) - f^{-1}(B_1)$.
+  \end{enumerate}
+
+  Show that $f$ preserves inclusions and unions only:
+
+  \begin{enumerate}[(a), noitemsep] \addtocounter{enumi}{4}
+    \item $A_0 \subset A_1 \Rightarrow f(A_0) \subset f(A_1)$.
+    \item $f(A_0 \cup A_1) = f(A_0) \cup (A_1)$.
+    \item $f(A_0 \cap A_1) \subset f(A_0) \cap (A_1)$; show that equality holds if $f$ is injective.
+    \item $f(A_0 - A_1) \supset f(A_0) - (A_1)$; show that equality holds if $f$ is injective.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{5}
+  In general, let us denote the \textbf{\textit{identity function}} for a set
+  $C$ by $i_C$. That is, define $i_C : C \to C$ to be the function given by the
+  rule $i_C(x) = x$ for all $x \in C$. Given $f : A \to B$, we say that a
+  function $g : B \to A$ is a \textbf{\textit{left inverse}} for $f$ if $g
+  \circ f = i_A$; and we say that $h : B \to A$ is a \textbf{\textit{right
+  inverse}} for $f$ if $f \circ g = i_B$.
+
+  \begin{enumerate}[(a), noitemsep]
+    \item Show that if $f$ has a left inverse, $f$ is injective; and if $f$ has
+      a right inverse, $f$ is surjective.
+    \item Give an example of a function that has a left inverse but no right inverse.
+    \item Give an example of a function that has a right inverse but no left inverse.
+    \item Can a function have more than one left inverse? More than one right inverse?
+    \item Show that if $f$ has both a left inverse $g$ and a right inverse $h$,
+      then $f$ is bijective and $g = h = f^{-1}$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  \begin{multipart}
+    \begin{qpart}
+      Suppose that $f$ has a left inverse $g$. Now let $a_1, a_2 \in A$ such
+      that $f(a_1) = f(a_2)$. Applying $g$ to both sides gives $a_1 = a_2$, so
+      $f$ is injective. Suppose now that $f$ has a right inverse $h$. For all
+      $b \in B$, $h(b)$ is the element which gets mapped to $b$ by $f$. Hence
+      $f$ is surjective.
+    \end{qpart}
+    \begin{qpart}
+      Consider $f(x) = e^x$. We can exhibit a left inverse to this function,
+      namely $g(x) = \ln(x)$, which means that $f$ is injective. However, there
+      are no negative numbers in the image of $f$, so it is not surjective.
+      This means that $f$ has no right inverse.
+
+      Now consider the function $f(x) = x + 2\sin(x)$. For any real $c$, we can
+      always find a closed interval $[a, b]$ such that $f(a) < c < f(b)$. That
+      means there exists some $x$ such that $f(x) = c$, and $f$ is surjective.
+      However, this function is not surjective. Let $x_1 = -\frac{10\pi}{3}$
+      and $x_2 \approx -7.179$. It is clear that $x_1 \neq x_2$, but we have
+      $f(x_1) = f(x_2)$.
+    \end{qpart}
+  \end{multipart}
+\end{solution}
+
+\begin{problem}{6}
+  Let $f : \mathbb{R} \to \mathbb{R}$ be the function $f(x) = x^3 - x$. By
+  restricting the domain and range of $f$ appropriately, obtain from $f$ a
+  bijective function $g$. Draw the graphs of $g$ and $g^{-1}$. (There are
+  several possible choices for $g$.)
+\end{problem}
+
+\begin{solution}
+  Choose $g : \{0\} \to \{0\}$ to be the restiction of $f$. The inverse of $g$
+  happens to be equivalent to $g$. The graph of $g$ is a single point at the
+  origin.
+\end{solution}
+
+\end{document}

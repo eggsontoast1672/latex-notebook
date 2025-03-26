@@ -1,0 +1,232 @@
+\documentclass{zupan}
+
+\usepackage[shortlabels]{enumitem}
+
+\title{Rudin Analysis: Exercises 1}
+\author{Paul Zupan}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+Unless the contrary is explicitly stated, all numbers that are mentioned in
+these exercises are understood to be real.
+
+\begin{exercise}{1}
+  If $r$ is rational ($r \neq 0$) and $x$ is irrational, prove that $r + x$ and
+  $rx$ are irrational.
+\end{exercise}
+
+\begin{solution}
+  Let $r$ be a nonzero rational number and let $x$ be a real number. We prove
+  these statements by their contrapositives.
+
+  \begin{enumerate}[(a)]
+    \item Suppose that $x + r = a/b$ is a rational number where $a, b \in
+      \mathbb{Z}$ with $b \neq 0$. Then we can write $x$ as the difference
+      between this ratio and $r$, namely $a/b - r$. The difference of rational
+      numbers is rational, so we conclude that $x$ is rational. By the
+      contrapositive, if $x$ is not rational, $x + r$ cannot be rational.
+    \item Suppose that $rx = a/b$ is a rational number were $a, b \in
+      \mathbb{Z}$ with $b \neq 0$. Since $r$ is nonzero, we can divide both
+      sides by $r$, giving that $x = a/rb$. The rationals are closed under
+      division, so we conclude as before that $x$ is rational. Once again, by
+      the contrapositive, if $x$ were not rational, then $rx$ would not be
+      rational.
+  \end{enumerate}
+\end{solution}
+
+\begin{exercise}{2}
+  Prove that there is no rational number whose square is 12.
+\end{exercise}
+
+\begin{solution}
+  It is sufficient to show that there exists no rational number which squares
+  to 3. To show this, we repeat the argument given in Rudin for the
+  irrationality of the square root of 2.
+
+  Let $x$ be a number which squares to 3. As we have proved, $x$ must be
+  irrational. Note that $(2x)^2 = 4x^2 = 12$. But a rational number times an
+  irrational number is irrational, so $2x$ must be irrational. Thus, there is
+  no rational number which squares to 12.
+\end{solution}
+
+\begin{exercise}{3}
+  Prove Proposition 1.15.
+\end{exercise}
+
+\begin{solution}
+  Throughout this problem, let $F$ be a field. Additionally, let $x$, $y$, and
+  $z$ be elements of $F$ with $x$ nonzero.
+
+  \begin{enumerate}[(a), noitemsep]
+    \item Suppose $xy = zx$. Then $(1/x)xy = (1/x)xz$, so $y = z$.
+    \item Suppose $xy = x$. Then $(1/x)xy = (1/x)x$, so $y = 1$.
+    \item Suppose $xy = 1$. Then $(1/x)xy = 1/x$, so $y = 1/x$.
+    \item We have $(1/x) \cdot x = x \cdot (1/x) = 1$, so $1/(1/x) = 1$.
+  \end{enumerate}
+\end{solution}
+
+\begin{exercise}{4}
+  Let $E$ be a nonempty subset of an ordered set; suppose $\alpha$ is a lower
+  bound of $E$ and $\beta$ is an upper bound of $E$. Prove that $\alpha \leq
+  \beta$.
+\end{exercise}
+
+\begin{solution}
+  Let $x \in E$. Since $\alpha$ is a lower bound of $E$, we know that $\alpha
+  \leq x$. Additionally, since $\beta$ is an upper bound of $E$, we know that
+  $x \leq \beta$. By the transitive property of $\leq$, we see that $\alpha
+  \leq \beta$ as required.
+\end{solution}
+
+\begin{exercise}{5}
+  Let $A$ be a nonempty set of real numbers which is bounded below. Let $-A$ be
+  the set of all numbers $-x$, where $x \in A$. Prove that
+
+  \[\inf{A} = -\sup(-A).\]
+\end{exercise}
+
+\begin{solution}
+  Let $\alpha = \sup(-A)$. First, we aim to show that $-\alpha$ is a lower
+  bound for $A$. Second, we aim to show that $-\alpha$ is the greatest lower
+  bound of $A$.
+
+  Since $\alpha$ is an upper bound for $-A$, for all $x \in A$, we know that
+  $-x \leq \alpha$. By multiplying both sides by $-1$, we can see that $-\alpha
+  \leq x$. Thus, $-\alpha$ is a lower bound for $A$. Next, since $\alpha$ is
+  the least upper bound of $-A$, for all $\beta < \alpha$, there exists $x \in
+  A$ such that $\beta < -x$. Let $\gamma = -\beta$. Based on the previous
+  assumption, for all $\gamma > -\alpha$, there exists $x \in A$ such that $x <
+  \gamma$. This means precisely that $-\alpha$ is the greatest lower bound of
+  $A$ as required.
+\end{solution}
+
+\begin{exercise}{6}
+  Fix $b > 1$.
+
+  \begin{enumerate}[(a), noitemsep]
+    \item If $m, n, p, q$ are integers, $n > 0$, $q > 0$, and $r = m/n = p/q$,
+      prove that \[(b^m)^{1 / n} = (b^p)^{1 / q}.\] Hence it makes sense to
+      define $b^r = (b^m)^{1 / n}$·
+    \item Prove that $b^{r + s} = b^rb^s$ if $r$ and $s$ are rational.
+    \item If $x$ is real, define $B(x)$ to be the set of all numbers $b^t$,
+      where $t$ is rational and $t < x$. Prove that \[b^r = \sup{B(r)}\] when
+      $r$ is rational. Hence it makes sense to define \[b^x = \sup{B(x)}\] for
+      every real $x$.
+    \item Prove that $b^{x + y} = b^xb^y$ for all real $x$ and $y$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}{8}
+  Prove that no order can be defined in the complex field that turns it into an
+  ordered field. \textit{Hint:} $-1$ is a square.
+\end{exercise}
+
+\begin{solution}
+  In particular, $i^2 = -1 < 0$, which contradicts the ordered field axioms.
+  Therefore we cannot define an ordered field structure for the complex
+  numbers.
+\end{solution}
+
+\begin{exercise}{9}
+  Suppose $z = a + bi$, $w = c + di$. Define $z < w$ if $a < c$, and also if $a
+  = c$ but $b < d$. Prove that this turns the set of all complex numbers into
+  an ordered set. (This type of order relation is ca11ed a dictionary order, or
+  lexicographic order, for obvious reasons.) Does this ordered set have the
+  least-upper-bound property ?
+\end{exercise}
+
+\begin{solution}
+  Let $z = a + bi$ and $w = c + di$ be complex numbers. We first show that
+  trichotomy holds. In the case that $a < c$ or $a > c$, then we have $z < w$
+  or $z > w$ respectively. If $a = c$, then $b < d$ or $b > d$ would imply that
+  $z < w$ or $z > w$ respectively. If we have $a = c$ and $b = d$, then $z =
+  w$. We have exhausted every case, and the ordering is always well defined, so
+  trichotomy holds.
+
+  Now let $v = e + fi$ be a complex number. Suppose that $z < w$ and $w < v$.
+  We examine the possible cases:
+
+  \begin{itemize}[noitemsep]
+    \item If $a < c$ and $c < e$, then $a < e$, so $z < v$.
+    \item If $a < c$ and $c = e$, then $a < e$, so $z < v$.
+    \item If $a = c$ and $c < e$, then $a < e$, so $z < v$.
+    \item If $a = c$ and $c = e$, then $b < d$ and $d < f$, so $b < f$ and $z < v$.
+  \end{itemize}
+
+  In every case we get that $z < v$, so transitivity holds. We conclude that
+  the dictionary ordering on the complex numbers does indeed constitute a
+  well-defined ordering.
+\end{solution}
+
+\begin{exercise}{10}
+  Suppose $z = a + bi$, $w = u + iv$, and \[a = \left(\frac{\abs{w} + u}{2}
+  \right)^{1/2}, \quad b = \left(\frac{\abs{w} - u}{2}\right)^{1/2}.\] Prove
+  that $z^2 = w$ if $v \geq 0$ and that $(\bar{z})^2 = w$ if $v \leq 0$.
+  Conclude that every complex number (with one exception!) has two complex
+  square roots.
+\end{exercise}
+
+\begin{exercise}{11}
+  If $z$ is a complex number, prove that there exists an $r \geq 0$ and a
+  complex number $w$ with $\abs{w} = 1$ such that $z = rw$. Are $w$ and $r$
+  always uniquely determined by $z$?
+\end{exercise}
+
+\begin{solution}
+  Let $z = a + bi$ be a complex number. Choose $r = \abs{z}$ and $w =
+  z/\abs{z}$. First, the norm of a complex number is always nonnegative, so $r
+  \geq 0$. Next, we compute the norm of $w$:
+
+  \[
+    \begin{aligned}
+      \abs{w}
+        & = \sqrt{(a/\abs{z})^2 + (b/\abs{z})^2} \\
+        & = \sqrt{a^2/\abs{z}^2 + b^2/\abs{z}^2} \\
+        & = \sqrt{(a^2 + b^2)/\abs{z}^2} \\
+        & = \sqrt{a^2 + b^2}/\abs{z} \\
+        & = \abs{z}/\abs{z} \\
+        & = 1 \\
+    \end{aligned}
+  \]
+
+  So $w$ has length 1 as required. Finally, we observe that $rw =
+  \abs{z}(z/\abs{z}) = z$. We had no choice in computing $r$ and $w$, and their
+  only dependency is the initial choice of the complex number $z$. Thus, these
+  two components are uniquely determined by $z$.
+\end{solution}
+
+\begin{exercise}{12}
+  If $z_1, \dots, z_n$ are complex, prove that \[\abs{z_1 + z_2 + \cdots + z_n}
+  \leq \abs{z_1} + \abs{z_2} + \cdots + \abs{z_n}.\]
+\end{exercise}
+
+\begin{solution}
+  \[
+    \begin{aligned}
+      \abs{z_1 + \cdots + z_n}
+        & = \sqrt{(a_1 + \cdots + a_n)^2 + (b_1 + \cdots + b_n)^2} \\
+        & \geq \sqrt{a_1^2 + \cdots + a_n^2 + b_1^2 + \cdots + b_n^2} \\
+    \end{aligned}
+  \]
+\end{solution}
+
+\begin{exercise}{15}
+  Under what conditions does equality hold in the Schwarz inequality?
+\end{exercise}
+
+\begin{exercise}{20}
+  With reference to the Appendix, suppose that property (III) were omitted from
+  the definition of a cut. Keep the same definitions of order and addition.
+  Show that the resulting ordered set has the least-upper-bound property, that
+  addition satisfies axioms (A1) to (A4) (with a slightly different
+  zero-element!) but that (A5) fails.
+\end{exercise}
+
+\begin{solution}
+
+\end{solution}
+
+\end{document}

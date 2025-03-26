@@ -1,0 +1,35 @@
+\documentclass{zupan}
+
+\begin{document}
+
+\begin{exercise}{1}
+  Prove that the empty set is a subset of every set.
+\end{exercise}
+
+\begin{solution}
+  Let $A$ be a set. For all $x$, the condition $x \in \varnothing \Rightarrow x
+  \in A$ is vacuously satisfied, so $\varnothing \subset A$.
+\end{solution}
+
+\begin{exercise}{2}
+  A complex number $z$ is said to be algebraic if there are integers $a_0 ,
+  \dots, a_n$, not all zero, such that \[a_0z^n + a_1z^{n - 1} + \cdots + a_{n
+  - 1}z + a_n = 0.\] Prove that the set of all algebraic numbers is countable.
+  \textit{Hint:} For every positive integer $N$ there are only finitely many
+  equations with \[n + \abs{a_0} + \abs{a_1} + \cdots + \abs{a_n} = N.\]
+\end{exercise}
+
+\begin{exercise}{4}
+  Is the set of all irrational real numbers countable?
+\end{exercise}
+
+\begin{solution}
+  No, this set cannot be countable. Suppose that the set of all irrational real
+  numbers $I = \mathbb{R} \setminus \mathbb{Q}$ is countable. Consider the set
+  $\mathbb{Q} \cup I$. Since this set was constructed from the union of two
+  countable sets, it must be countable. However, this is a contradiction since
+  the real numbers are uncountable. Thus, the irrational reals cannot be
+  countable.
+\end{solution}
+
+\end{document}

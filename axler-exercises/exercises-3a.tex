@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+
+\newenvironment{problem}[1]{\paragraph{#1}}{}
+\newenvironment{solution}{\textit{Solution.}\:}{\hfill $\square$}
+
+\begin{document}
+
+\begin{problem}{1}
+  Suppose $b, c \in \mathbb{R}$. Define $T : \mathbb{R}^3 \to \mathbb{R}^2$ by
+  $T(x, y, z) = (2x - 4y + 3z + b, 6x + cxyz$. Show that $T$ is linear if and
+  only if $b = c = 0$.
+\end{problem}
+
+\begin{solution}
+  $(\Rightarrow)$ Let $b = c = 0$. We first need to show that $T$ distributes
+  over sums. Let $\vec{v} = (v_1, v_2, v_3)$ and $\vec{w} = (w_1, w_2, w_3)$ be
+  vectors in $\mathbb{R}^3$.
+
+  \[
+    \begin{split}
+      T(\vec{v} + \vec{w}) & = (2(v_1 + w_1) - 4(v_2 + w_2) + 3(v_3 + w_3), 6(v_1 + w_1) \\
+                           & = (2v_1 + 2w_1 - 4v_2 - 4w_2 + 3v_3 + 3w_3, 6v_1 + 6w_1)    \\
+                           & = (2v_1 - 4v_2 + 3v_3, 6v_1) + (2w_1 - 4w_2 + 3w_3, 6w_1)   \\
+                           & = T(\vec{v}) + T(\vec{w})                                   \\
+    \end{split}
+  \]
+
+  Now we need to show that $T$ respects scalar multiplication. Let $a \in
+  \mathbb{R}$ be a scalar.
+
+  \[
+    \begin{split}
+      T(a\vec{v}) & = (2av_1 - 4av_2 + 3av_3, 6av_1) \\
+                  & = a(2v_1 - 4v_2 + 3v_3, 6v_1)    \\
+                  & = aT(\vec{v})                    \\
+    \end{split}
+  \]
+
+  Since $T$ respects vector addition and scalar multiplication, it must be a
+  linear transformation.
+
+  $(\Leftarrow)$ Suppose that $T$ is a linear transformation. We aim to show
+  that $b = c = 0$. Let $\vec{v} = (v_1, v_2, v_3)$ and $\vec{w} = (w_1, w_2,
+  w_3)$ be vectors in $\mathbb{R}^3$. Since $T$ is a linear transformation, it
+  respects vector addition, so we have the following:
+
+  \[
+    \begin{aligned}
+      hi
+    \end{aligned}
+  \]
+\end{solution}
+
+\end{document}

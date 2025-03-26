@@ -1,0 +1,282 @@
+\documentclass{zupan}
+
+\usepackage[shortlabels]{enumitem}
+
+\begin{document}
+
+\begin{problem}{1}
+  Given the matrix \(A\):
+
+  \[
+    A = \begin{bmatrix}
+      1 & 2 & 3 \\
+      0 & 1 & 1 \\
+      1 & 3 & 4 \\
+    \end{bmatrix}
+  \]
+
+  \begin{enumerate}[a., noitemsep]
+    \item Find the rank of \(A\).
+    \item Determine the nullity of \(A\).
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  The rank of $A$ is the dimension of its column space, which is simply the
+  maximal number of linearly independent columns in $A$.
+
+  \[
+    \begin{bmatrix}
+      1 & 2 & 3 \\
+      0 & 1 & 1 \\
+      1 & 3 & 4
+    \end{bmatrix}
+    \sim \begin{bmatrix}
+      1 & 2 & 3 \\
+      0 & 1 & 1 \\
+      0 & 1 & 1
+    \end{bmatrix}
+    \sim \begin{bmatrix}
+      1 & 2 & 3 \\
+      0 & 1 & 1 \\
+      0 & 0 & 0
+    \end{bmatrix}
+  \]
+
+  The matrix \(A\) has two pivot columns, so only two of its columns are
+  linearly independent. Therefore \(A\) has a rank of 2. By the rank-nullity
+  theorem, \(A\) has a nullity of 1.
+\end{solution}
+
+\begin{problem}{2}
+  Consider the matrix \(B\):
+
+  \[
+    B = \begin{bmatrix}
+      1 & 0 & -2 & 1 \\
+      0 & 1 & 3 & 2 \\
+      0 & 0 & 0 & 0 \\
+    \end{bmatrix}
+  \]
+
+  What is the rank of \(B\)?
+\end{problem}
+
+\begin{solution}
+  It is easy to see that $B$ has two linearly independent columns. This means
+  that the rank of \(B\) is 2.
+\end{solution}
+
+\begin{problem}{3}
+  Find a basis for the null space (kernel) of the matrix:
+
+  \[
+    C = \begin{bmatrix}
+      1 & -1 & 2 \\
+      0 & 1 & -1 \\
+      0 & 0 & 0 \\
+    \end{bmatrix}
+  \]
+\end{problem}
+
+\begin{solution}
+  We begin by row reducing \(C\):
+
+  \[
+    \begin{bmatrix}
+      1 & -1 & 2 \\
+      0 & 1 & -1 \\
+      0 & 0 & 0 \\
+    \end{bmatrix}
+    \sim \begin{bmatrix}
+      1 & 0 & 1 \\
+      0 & 1 & -1 \\
+      0 & 0 & 0 \\
+    \end{bmatrix}
+  \]
+
+  We can easily read off the null space:
+
+  \[
+    \Null(C) = \Span\left\{
+      \begin{bmatrix} -1 \\ 1 \\ 1 \end{bmatrix}
+    \right\}
+  \]
+\end{solution}
+
+\begin{problem}{4}
+  Determine whether the set of vectors \(v_1 = (1, 0, 1)\), \(v_2 = (2, 1,
+  3)\), and \(v_3 = (0, 1, -1)\) forms a basis for \(\mathbb{R}^3\).
+\end{problem}
+
+\begin{solution}
+  Let $V$ be the matrix whose columns are $v_1$, $v_2$, and $v_3$. By the
+  invertible matrix theorem, $v_1, \dots, v_3$ are a basis for $\mathbb{R}^3$
+  if and only if $V$ is invertible.
+
+  \[
+    \begin{bmatrix}
+      1 & 2 & 0 \\
+      0 & 1 & 1 \\
+      1 & 3 & -1 \\
+    \end{bmatrix}
+    \sim \begin{bmatrix}
+      1 & 2 & 0 \\
+      0 & 1 & 1 \\
+      0 & 1 & -1 \\
+    \end{bmatrix}
+    \sim \begin{bmatrix}
+      1 & 2 & 0 \\
+      0 & 1 & 1 \\
+      0 & 0 & -2 \\
+    \end{bmatrix}
+  \]
+
+  The matrix $V$ has 3 pivot positions, so it is invertible. Thus, $v_1, \dots,
+  v_3$ form a basis for $\mathbb{R}^3$ as required.
+\end{solution}
+
+\section*{Problem 5}
+
+Find a basis for the column space of the matrix:
+
+\[
+  D = \begin{bmatrix}
+    1 & 2 & 3 \\
+    2 & 4 & 6 \\
+    3 & 6 & 9
+  \end{bmatrix}
+\]
+
+\subsection*{Solution}
+
+By definition, the columns of \(D\) span the column space of \(D\). That means
+that we are looking for a linearly independent subset of the columns of \(D\),
+which will still span the column space of \(D\), also by definition. We can do
+this by row-reducing \(D\):
+
+\[
+  \begin{bmatrix}
+    1 & 2 & 3 \\
+    2 & 4 & 6 \\
+    3 & 6 & 9
+  \end{bmatrix}
+  \sim \begin{bmatrix}
+    (1) & 2 & 3 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+  \end{bmatrix}
+\]
+
+Only the first column is a pivot column, so the first column of the original
+matrix is enough to constitute a basis. Hence, a basis for the column space of
+\(D\) is \(\{\langle 1, 2, 3 \rangle\}\). \(\square\)
+
+\section*{Problem 6}
+
+Does the set of vectors \(\{\langle 1, 2 \rangle, \langle 3, 6 \rangle\}\) span
+\(\mathbb{R}^2\)?
+
+\subsection*{Solution}
+
+No, that set of vectors given, henceforth denoted by \(S\), does not span
+\(\mathbb{R}^2\). In order to prove this, we must show that there exists some
+vector \(\vec{v}\) which cannot be represented as a linear combination of the
+elements of \(S\). Take \(\vec{v} = \langle 1, 1 \rangle\).
+
+\[
+  \begin{bmatrix}
+    1 & 3 & 1 \\
+    2 & 6 & 1
+  \end{bmatrix}
+  \sim \begin{bmatrix}
+    1 & 3 & 1 \\
+    0 & 0 & -1
+  \end{bmatrix}
+\]
+
+Row reducing the augmented matrix reveals that we have an inconsistent linear
+system, meaning that \(\vec{v}\) cannot possibly be a linear combination of the
+elements of \(S\). Since there exists some vector \(\vec{v} \in \mathbb{R}^2\)
+such that \(\vec{v} \notin \text{span}(S)\), it must be the case that the
+elements of \(S\) do not span \(\mathbb{R}^2\). \(\square\)
+
+\section*{True/False Conceptual Questions}
+
+Mark each of the following statements with either true or false.
+
+\begin{enumerate}[a.]
+  \item The rank of a \(3 \times 4\) matrix can be at most 4.
+  \item If a matrix \(A\) has rank 2, then its nullity must be 0.
+  \item Every vector space has exactly one basis.
+  \item The set of all polynomials of degree at most 2 forms a 2-dimensional
+    vector space.
+  \item If a set of vectors spans \(\mathbb{R}^3\), it must contain exactly 3
+    vectors.
+  \item The zero vector can be a part of a linearly independent set.
+  \item If a linear transformation \(T : \mathbb{R}^3 \to \mathbb{R}^3\) is
+    one-to-one, it must also be onto.
+  \item The nullity of a linear transformation can be greater than its rank.
+\end{enumerate}
+
+\subsection*{Solutions}
+
+a. False. The rank of a matrix \(A\) is equal to the dimension of the column
+space of \(A\), which is equal to the number of pivot columns in \(A\). Suppose
+that \(A\) is an \(m \times n\) matrix. The maximum number of pivot columns
+that \(A\) can have is \(\min\{m, n\}\). Thus, the rank of a \(3 \times 4\)
+matrix can be at most 3.
+
+b. False. Consider a \(2 \times 4\) matrix \(A\) which has 2 pivot columns. The
+rank of \(A\) is 2, but the nullity of \(A\) is \(4 - 2 = 2 \neq 0\). Thus,
+there exists a matrix which has a rank of 2 with a nonzero nullity.
+
+c. False (kind of). This statement is not true up to identity, but it is true
+up to isomorphism. For instance, two possible bases of \(\mathbb{R}^2\) are
+\(\{\langle \hat\imath, \hat\jmath \rangle\}\) and \(\{\langle 2\hat\imath,
+2\hat\jmath \rangle\}\). Since those bases do not contain the same elements,
+they are unequal as sets, but they are still both valid bases. However, it is
+true that all bases of a fixed vector space are equivalent up to isomorphism.
+
+\textit{Proof} \: Fix a vector space \(V\). Suppose \(B_1\) and \(B_2\) are
+bases of \(V\). By definition of dimension, \(|B_1| = \dim(V)\) and \(|B_2| =
+\dim(V)\). By the symmetric and transitive properties of equality, we must have
+\(|B_1| = |B_2|\). Thus, \(B_1\) and \(B_2\) are isomorphic as sets.
+\(\square\)
+
+d. False. The space of polynomials with maximum degree \(\leq 2\) actually
+forms a 3-dimensional vector space. First, this space, often denoted \(P_2\),
+is known to be a vector space. Second, \(P_2\) is isomorphic to
+\(\mathbb{R}^3\) via the following two maps:
+
+\[
+  \begin{cases}
+    f(ax^2 + bx + c) & = \langle a, b, c \rangle \\
+    f^{-1}(a, b, c) & = ax^2 + bx + c
+  \end{cases}
+\]
+
+Thus, \(P_2\) forms a 3-dimensional vector space rather than a 2-dimensional
+vector space.
+
+e. False. Consider the three standard basis vectors of \(\mathbb{R}^3\) in
+addition to the vector \(\langle 1, 1, 1 \rangle\). These four vectors span
+\(\mathbb{R}^3\). This is the manner in which we define linear dependence.
+
+f. False. If a set of vectors contains the zero vector, even if all of the
+other vectors are linearly independent, you can always set the coefficient of
+the zero vector to a nonzero scalar. That means that for any set of vectors
+which contains the zero vector, there exists a nontrivial linear combination of
+the vectors which results in the zero vector. Thus, those vectors must be
+linearly dependent by definition.
+
+g. True. Consider the standard matrix of \(T\), called \(A\). If \(T\) is
+one-to-one, \(A\) must have a pivot in each column. But since \(T\) goes from
+\(\mathbb{R}^3\) to \(\mathbb{R}^3\), \(A\) must be a square matrix. That means
+that \(A\) must have a pivot in each row, which means that \(T\) must be onto.
+
+h. True. Consider a \(3 \times 5\) matrix with two pivot columns. The rank is 2
+and the nullity is 3. Thus, there exists a matrix whose nullity is greater than
+its rank.
+
+\end{document}
