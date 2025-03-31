@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[12pt, titlepage]{article}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -6,9 +6,32 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{parskip}
 
+\title{Where Do Numbers Come From?}
+\author{Paul Zupan}
+\date{\today}
+
 \newtheorem{definition}{Definition}
 
 \begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+% Why do numbers need definitions?
+
+Numbers are a concept of infinite use in math. They are used extensively
+throughout many different fields, and almost every person uses them on a daily
+basis. However, dispite popular belief, numbers are not axiomatic in nature.
+That is, all of the number with which we are used to working are constructed
+from more basic concepts.
+
+The common conception is that numbers are the most fundamental objects in
+mathematics, but in reality, that role is served by the set. Sets are
+collections of objects which have only a few simple properties, whicm make them
+a great building block from which to construct further notions.
 
 In most math, we depend on the axioms of set theory. That means that everything
 in math can be defined in terms of sets, including numbers. But how exactly are
@@ -17,38 +40,84 @@ numbers constructed from sets?
 The most fundamental concept in math is the set. Everything in mathematics can
 be defined in terms of sets. So, what exactly is a set?
 
+\section{Basic Set Theory}
+
+\subsection{Definition and Properties}
+
+Sets serve as a ground level concept in math. This means that we do not define
+sets in terms of other concepts, rather we assume that a set is something which
+exists and go from there. Additionally, we list the properties that sets ought
+to have, called axioms. These are the foundations provided by the ZFC axioms,
+or the Zermelo-Fraenkel axioms with the axiom of choice.
+
 \begin{definition}
   A set is a collection of objects, called its elements.
 \end{definition}
 
-We typically name sets with uppercase letters such as \(A\) or \(B\), whereas
-elements are named by lowercase letters like \(x\) or \(y\). If a set \(A\)
-contains an element \(x\), we write \(x \in A\). This point of view gives rise
-to some important properties of sets.
+This is the most fundamental definition in all of math. Sets are typically
+denoted by uppercase letters, whereas elements of sets are represented by
+lowercase letters. If \(A\) is a set, then we express that \(a\) is an element
+of that set by writing \(a \in A\). An important property of sets is that for
+any given element \(a\) and any set \(A\), there exists a dichotomy by which
+\(a\) is either an element of \(A\), or it is not an element of \(A\). It is
+not possible for neither to be true, nor for both to be true.
 
-Firstly, sets are unordered. If a set \(A\) contains two elements \(x\) and
-\(y\), it does not matter in which order they are contained. We only concern
-ourselves with the fact that \(A\) contains both. Secondly, we do not consider
-sets to have duplicate elements. For some element \(x\), if it is contained in
-\(A\), then we do not consider the situation further.
+In particular, sets are not necessarily ordered. If a set \(A\) contains two
+elements \(x\) and \(y\), it does not matter in which order they are contained.
+We only concern ourselves with the fact that \(A\) contains both. However, it
+is sometimes useful to impose an ordering on a set, which we will see.
+Secondly, we do not consider sets to have duplicate elements. For some element
+\(x\), if it is contained in \(A\), then we do not consider the situation
+further.
 
-Another concept which is quite useful is that of a subset. We say that the set
-\(A_0\) is a subset of \(A\) if and only if for every element \(x\) of \(A_0\),
-it is true that \(x \in A\). If this holds, we write \(A_0 \subset A\). Note
-that this does not exclude the possibility that \(A_0\) and \(A\) denote the
-same set. If it is also true that \(A \subset A_0\), then we say that \(A_0 =
-A\), for they contain precisely the same elements.
+\subsection{Special Sets}
 
-There is one set which deserves special consideration. This set is the empty
-set, written \(\varnothing\). This set has the unique property that for any
-element \(x\), the set \(\varnothing\) does not contain \(x\). Particularly,
-this means that the empty set is a subset of every other set. This is because
-the subset condition is vacuously satisfied.
+There are a few special sets which are of particular interest. One such type of
+set is a subset. We say that the set \(A_0\) is a subset of \(A\) if and only
+if for every element \(x\) of \(A_0\), it is true that \(x \in A\). If this
+holds, we write \(A_0 \subset A\). Note that this does not exclude the
+possibility that \(A_0\) and \(A\) denote the same set. If it is also true that
+\(A \subset A_0\), then we say that \(A_0 = A\), for they contain precisely the
+same elements. If \(A_0\) is a subset of \(A\) but the two sets are not equal,
+we say that \(A_0\) is a \textbf{strict subset} of \(A\).
 
-Finally, there is an important operation we can perform on sets called union.
-The set \(A \cup B\) contains every element which is contained in either \(A\)
-or \(B\), or possibly both. For example, if \(A = \{1, 2, 3\}\) and \(B = \{3,
-4\}\), then \(A \cup B = \{1, 2, 3, 4\}\).
+While most sets contain at least one element, we give special consideration to
+the set which contains no elements, called the empty set. We denote this set by
+the symbol \(\varnothing\). A fact of note regarding the empty set is that it
+is always a subset of any other set. The reason why may not be obvious at
+first, so we turn to the definition. Suppose \(A\) is some set. We need to show
+that for every element \(a\) in the empty set, \(a\) is also an element of
+\(A\). But there are no elements in the empty set, so we say that the condition
+is vacuously satisfied.
+
+\subsection{Set Operations}
+
+There are a variety of ways that we can use sets to build new sets. This is not
+an exhaustive list, but all the concepts needed to understand the rest of this
+text will be covered.
+
+Given two sets, we can join them to create a set containing all elements from
+either set. This operation is called \textbf{union}. If \(A\) and \(B\) are
+sets, then we write their union \(A \cup B\). An element of \(x\) is a member
+of \(A \cup B\) if it is either a member of \(A\) or of \(B\), or both. For
+example, if \(A = \{a, b, c\}\) and \(B = \{c, d, e\}\), then \[A \cup B = \{a,
+b, c, d, e\}.\] As a side note, the existance of a set formed from the union of
+two sets is guaranteed by the axiom of union from ZFC.
+
+Next, it is useful to be able to take two elements and create an ordered pair
+out of them. Suppose that \(a\) and \(b\) are elements. Then we define the pair
+with \(a\) as its first element and \(b\) as its second element to be the set
+\(\{\{a\}, \{a, b\}\}\). This set is often written a more condensed form,
+namely \((a, b)\). Finally, we define the Cartesian product of the sets \(A\)
+and \(B\) to be \[\{(a, b) \mid a \in A, b \in B\}.\] This set consists of all
+pairs whose first element is from \(A\) and second element is from \(B\). The
+product of \(A\) with itself is frequently shortened to \(A^2\).
+
+There is one more construction that will come up while constructing numbers
+from sets. In order to understand it, however, we first need to explore
+equivalence relations.
+
+\subsection{Equivalence Relations}
 
 With this information in hand, we are ready to construct the most basic set of
 numbers, the natural numbers. Each number is defined in an iterative fashion as
