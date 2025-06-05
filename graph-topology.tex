@@ -1,0 +1,116 @@
+\documentclass{amsart}
+
+\usepackage{amssymb}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{tikz}
+
+\usetikzlibrary{graphs}
+
+\newtheorem{definition}{Definition}[section]
+
+\renewcommand{\Im}{\operatorname{Im}}
+
+\title{Topological Representations and Drawings in Graph Theory}
+\author{
+  \small{Paul Zupan} \\
+  \footnotesize{University of Oregon} \\
+  \footnotesize{email: pzupan@uoregon.edu}
+}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+  While graphs are an inherently algebraic construct, it is useful to interpret
+  them as topological spaces. This perspective allows us to more easily study
+  concepts like connectedness and planarity using the language and tools of
+  topology.
+\end{abstract}
+
+\maketitle
+
+\section{Graphs}
+
+\begin{definition}
+  A graph \(G\) is an ordered triple \((V, E, \varphi)\) consisting of a set
+  \(V\) of \textbf{vertices}, a set \(E\) of \textbf{edges}, and an
+  \textbf{adjacency map} \(\varphi : E \to \mathcal{P}(V)\) such that
+  \(\varphi(e)\) contains exactly two distinct vertices for all \(e \in E\).
+\end{definition}
+
+The definition that we give is for a \textbf{finite, simple} graph. By finite,
+we mean that both \(V\) and \(E\) are finite sets. By simple, we mean that no
+edge joins a vertex to itself, and that no pair of vertices is joined by two
+distinct edges. Neither of these assumptions are made out of necessity, but for
+the sake of simplicity.
+
+Since the graphs that we will consider do not have parallel edges, any edge can
+be uniquely identified by the vertices that it joins. For instance, the edge
+joining vertices \(v_1\) and \(v_2\) is often written \(v_1v_2\), or \(v_2v_1\)
+equivalently. This allows us to think of the incidence map implicitly.
+
+A purely algebraic representation for graphs does not lend itself to easy
+study. For this reason, we frequently draw pictures of graphs to see them more
+clearly. Suppose we had a graph \(G\) with vertex set \(V = \{v_1, v_2, v_3\}\)
+and edge set \(E = \{v_1v_2, v_2v_3\}\). We could draw this graph in the
+following way:
+
+\vspace{0.25in}
+\begin{center}
+  \tikz\graph[nodes={draw, circle}, typeset=\(v_{\tikzgraphnodetext}\)] {
+    1 -- 2 -- 3
+  };
+\end{center}
+\vspace{0.25in}
+
+We will frequently omit the names of nodes if they are unimportant in that
+particular context.
+
+% \begin{definition}
+%   Let \(G = (V, E, \varphi)\) be a graph. We say that \(u, v \in V\) are
+%   \textbf{adjacent} in \(G\) if \(\varphi(e) = \{u, v\}\) for some edge \(e \in
+%   E\).
+% \end{definition}
+
+\section{Topological Representations}
+
+\begin{definition}
+  Let \(G = (V, E, \varphi)\) be a graph. The \textbf{topological
+  representation} of \(G\), denoted \(T(G)\), is the set
+
+  \begin{equation*}
+    V \sqcup \bigsqcup_{e \in E} [0, 1]
+  \end{equation*}
+
+  bearing the subspace topology on \(\mathbb{R}^2\).
+\end{definition}
+
+\section{Drawings}
+
+\begin{definition}
+  Let \(G = (V, E, \varphi)\) be a graph. A \textbf{drawing} of \(G\) consists
+  of the following:
+  
+  \begin{itemize}
+    \item A vertex embedding \(f : V \hookrightarrow \mathbb{R}^2\)
+    \item A collection of continuous edge maps \(\{f_e : [0, 1] \to
+      \mathbb{R}^2 \setminus \Im(f)\}_{e \in E}\)
+  \end{itemize}
+
+  subject to the condition that if \(\varphi(e) = \{v_1, v_2\}\), then \(f_e(0)
+  = f(v_1)\) and \(f_e(1) = f(v_2)\).
+\end{definition}
+
+This definition aims to reflect the process by which one would draw a graph on
+a piece of paper. One might first draw the vertices, putting one point per
+vertex such that none are in the same spot. Then, the vertices would be linked
+together in a clear manner such that the endpoints of the edges are attached to
+the correct vertices.
+
+\begin{definition}
+  Let \(G\) be a graph. We say that \(G\) is \textbf{planar} if there exists a
+  drawing \((f, \{f_e\}_{e \in E})\) of \(G\) such that for every pair of edges
+  \((e_1, e_2)\) in \(G\).
+\end{definition}
+
+\end{document}
